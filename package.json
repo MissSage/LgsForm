@@ -20,6 +20,6 @@
   },
   "homepage": "https://github.com/ligoushi/LgsForm#readme",
   "dependencies": {
-    "@missssage/lgsform": "^1.0.0"
+    "@missssage/lgsform": "^2.1.1"
   }
 }
