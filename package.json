@@ -1,0 +1,25 @@
+{
+  "name": "@missssage/lgsform",
+  "version": "2.0.0",
+  "description": "a form generator",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/ligoushi/LgsForm.git"
+  },
+  "keywords": [
+    "lgsform"
+  ],
+  "author": "missssage",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/ligoushi/LgsForm/issues"
+  },
+  "homepage": "https://github.com/ligoushi/LgsForm#readme",
+  "dependencies": {
+    "@missssage/lgsform": "^1.0.0"
+  }
+}
