@@ -17,7 +17,7 @@ export default defineConfig({
       }
     },
     lib: {
-      entry: './src/components/index.ts',
+      entry: './src/packages/index.ts',
       name: 'lgsform'
     }
   }

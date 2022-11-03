@@ -1,4 +1,4 @@
-type IButtonType =
+export type IButtonType =
   | 'default'
   | 'success'
   | 'warning'
@@ -6,9 +6,9 @@ type IButtonType =
   | 'primary'
   | 'danger'
   | 'text'
-type ISize = 'small' | 'large' | 'default' | ''
+export type ISize = 'small' | 'large' | 'default' | ''
 
-type IButton = {
+export type IButton = {
   type?: IButtonType | ((row?: any) => IButtonType)
   text?: string | ((row?: any) => string)
   icon?: string | ((row?: any) => string)

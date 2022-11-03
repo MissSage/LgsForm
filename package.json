@@ -12,7 +12,7 @@
     "dist/*.js",
     "dist/*.css",
     "lgsform.d.ts",
-    "src/components",
+    "src/packages",
     "src/directives"
   ],
   "author": {
