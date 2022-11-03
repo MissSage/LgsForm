@@ -1,25 +1,34 @@
 {
   "name": "@missssage/lgsform",
-  "version": "2.1.1",
-  "description": "a form generator",
-  "main": "index.js",
-  "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
-  },
-  "repository": {
-    "type": "git",
-    "url": "git+https://github.com/ligoushi/LgsForm.git"
-  },
-  "keywords": [
-    "lgsform"
+  "private": false,
+  "version": "0.0.0",
+  "type": "module",
+  "main": "dist/index.js",
+  "types": "lgs-form.d.ts",
+  "module": "dist/index.es.js",
+  "files": [
+    "dist/*.js",
+    "dist/*.css",
+    "index.d.ts",
+    "src/components",
+    "src/directives"
   ],
-  "author": "missssage",
-  "license": "ISC",
-  "bugs": {
-    "url": "https://github.com/ligoushi/LgsForm/issues"
+  "author": {
+    "name": "ligoushi",
+    "email": "184078718@qq.com"
   },
-  "homepage": "https://github.com/ligoushi/LgsForm#readme",
-  "dependencies": {
-    "@missssage/lgsform": "^2.1.1"
+  "scripts": {
+    "dev": "vite",
+    "build": "vue-tsc && vite build",
+    "preview": "vite preview"
+  },
+  "dependencies": {},
+  "devDependencies": {
+    "vue": "^3.2.41",
+    "@vitejs/plugin-vue": "^3.2.0",
+    "element-plus": "^2.2.19",
+    "typescript": "^4.6.4",
+    "vite": "^3.2.0",
+    "vue-tsc": "^1.0.9"
   }
 }
