@@ -7,6 +7,7 @@
   "types": "lgsform.d.ts",
   "module": "dist/lgsform.js",
   "license": "ISC",
+  "description": "a package about formusage",
   "files": [
     "dist/*.js",
     "dist/*.css",

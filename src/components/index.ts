@@ -5,12 +5,11 @@ const components = [
   Button
 ]
 
-const install: any = function(app: App) {
-  if(install.installed) return
-  install.installed  = true
-  components.forEach(res=>{
-    app.component(res.name,res)
-  })
+const install = (app:App):void => {
+  components.map((component) => app.component(component.name,component))
+}
+export {
+  Button
 }
 export default {
   install
