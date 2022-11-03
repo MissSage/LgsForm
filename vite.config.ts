@@ -8,6 +8,7 @@ export default defineConfig({
     rollupOptions: {
       external: ['vue', 'element-plus'],
       output: {
+        extend: true,
         inlineDynamicImports: true,
         globals: {
           vue: 'Vue',
@@ -17,7 +18,8 @@ export default defineConfig({
     },
     lib: {
       entry: './src/components/index.ts',
-      name: 'lgs-form'
+      name: 'lgsform',
+      formats: ['es','umd','cjs','iife']
     }
   }
 })
