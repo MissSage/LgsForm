@@ -18,8 +18,7 @@ export default defineConfig({
     },
     lib: {
       entry: './src/components/index.ts',
-      name: 'lgsform',
-      formats: ['es','umd','cjs','iife']
+      name: 'lgsform'
     }
   }
 })

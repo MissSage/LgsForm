@@ -10,7 +10,7 @@
   "files": [
     "dist/*.js",
     "dist/*.css",
-    "index.d.ts",
+    "lgsform.d.ts",
     "src/components",
     "src/directives"
   ],
