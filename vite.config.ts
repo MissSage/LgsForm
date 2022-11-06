@@ -13,7 +13,8 @@ export default defineConfig({
         globals: {
           vue: 'Vue',
           'element-plus': 'elementPlus'
-        }
+        },
+        exports: "named"
       }
     },
     lib: {

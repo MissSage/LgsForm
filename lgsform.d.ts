@@ -1,5 +1,5 @@
 import { Plugin } from 'vue'
-import ButtonVue from './src/packages/Button.vue';
+import * as lgsform from './src/packages';
 export declare type SFCWithInstall<T> = T & Plugin;
 export type IButtonType =
   | 'default'
@@ -45,8 +45,5 @@ export type IButton = {
   // 下拉菜单
   items?: any[]
 }
-export const Button:ButtonVue
-const lgsform = {
-  Button: Button
-}
+export declare const Button: typeof lgsform.Button
 export default lgsform
