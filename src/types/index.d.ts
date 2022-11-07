@@ -1,12 +1,14 @@
 /// <reference types="vite/client" />
 
-import FormIns from './components/Form'
+import {Form} from '../packages/es/Form'
 declare module 'vue'{
   export interface GlobalComponents{
-    Form: typeof FormIns
+    Form
   }
 }
-export const Form:typeof FormIns
+export{
+  Form
+} 
 export default {
   Form
 }
