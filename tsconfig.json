@@ -18,15 +18,11 @@
     "suppressImplicitAnyIndexErrors": true,
     "types": ["vite/client"],
     "paths": {
-      "@/*": [
-          "./src/*"
-      ],
-      "~@/*": [
-          "./src/*"
-      ]
-  }
+      "@/*": ["./src/*"],
+      "~@/*": ["./src/*"]
+    }
   },
-  "include": ["src/**/*.ts", "src/**/*.d.ts", "src/**/*.tsx", "src/**/*.vue", "src/types/interfaces.d.ts"],
+  "include": ["src/**/*.ts", "src/**/*.d.ts", "src/**/*.tsx", "src/**/*.vue", "src/types/index.d.ts", "src/types/index.d.ts"],
   "references": [{ "path": "./tsconfig.node.json" }],
   "exclude": ["node_modules"]
 }

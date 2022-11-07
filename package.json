@@ -19,7 +19,7 @@
       "import": "./dist/lgsform.js",
       "require": "./dist/lgsform.umd.js"
     },
-    "./dist/style.css": {
+    "./style.css": {
       "import": "./dist/style.css",
       "require": "./dist/style.css"
     }

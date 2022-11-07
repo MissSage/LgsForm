@@ -29960,12 +29960,12 @@ const Ep = /* @__PURE__ */ Pn(G$e, [["__scopeId", "data-v-8ac9a1ad"]]), q$e = { 
 Zp.install = (e) => {
   e.component(Zp.name, Zp);
 };
-const X$e = Zp, J$e = [X$e], Z$e = (e) => {
-  J$e.map((t) => e.component(t.name, t));
-}, l3e = {
-  install: Z$e
+const X$e = Zp, J$e = [X$e], s3e = {
+  install(e) {
+    J$e.map((t) => e.component(t.name, t));
+  }
 };
 export {
   X$e as Form,
-  l3e as default
+  s3e as default
 };
