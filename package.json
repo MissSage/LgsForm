@@ -23,7 +23,6 @@
       "require": "./dist/style.css"
     }
   },
-  "typings": "src/types/index.d.ts",
   "author": {
     "name": "ligoushi",
     "email": "184078718@qq.com"
