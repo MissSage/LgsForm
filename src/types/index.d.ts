@@ -1,1 +1,1 @@
-export * from '../packages/es/Form'
+export * from './Form'
