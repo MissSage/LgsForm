@@ -1,2 +1,3 @@
-import AttrTable from '../packages/AttrTable/AttrTable.vue';
+import AttrTable from '../packages/components/AttrTable.vue'
+
 export default typeof AttrTable

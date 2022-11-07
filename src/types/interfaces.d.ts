@@ -23,8 +23,13 @@ type NormalOption = {
   /** 单位 表单中值第一个参数为值，第二个参数为表单数据，第三个值为当前表单元素的配置 */
   unit?: string | ((val: any, row: any, config: any) => any)
 }
-
- type IButton = {
+type MoreFilterConditions = {
+  label?: string
+  value?: any
+  filter?: IFormItem
+  formatter?: (val: any, row?: any, filter?: IFormItem) => any
+}
+type IButton = {
   type?: IButtonType | ((row?: any) => IButtonType)
   text?: string | ((row?: any) => string)
   icon?: string | ((row?: any) => string)
@@ -395,10 +400,11 @@ interface IFormTableColumn {
   /**
    * 单元格的样式
    */
-  cellStyle?: StyleSheet
-  | Record<string, string>
-  | string
-  | ((row: any, val: any, field?: string) => any)
+  cellStyle?:
+    | StyleSheet
+    | Record<string, string>
+    | string
+    | ((row: any, val: any, field?: string) => any)
   className?: string
   /**
    * 格式化文本内容
@@ -602,7 +608,7 @@ interface IFormButtonGroup extends IFormItemBase {
 interface ITabs extends IFormItemBase {
   type: 'tabs'
   closable?: boolean
-  theme?: 'darkblue'
+  theme?: 'darkblue' | 'dark'
   tabs: NormalOption[]
   tabType?: 'simple' | 'card' | 'inset' | 'border-card'
   btns?: IButton[]
@@ -1010,9 +1016,9 @@ interface IDialogFormConfig extends IFormConfig {
   // 自定义按钮
   btns?: IButton[]
   // 是否启用打印
-  print?: boolean,
+  print?: boolean
   // 打印配置
-  printConfigure?:any,
+  printConfigure?: any
 }
 interface ISearch {
   size?: ISize

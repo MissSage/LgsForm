@@ -6,12 +6,23 @@
  */
 export const formatTree = (
   tree: any[],
-  keys?: { label: string; value: string; id: string; children?: string; isLeaf?: string },
+  keys?: {
+    label: string
+    value: string
+    id: string
+    children?: string
+    isLeaf?: string
+  },
   pPath?: any[],
   type?: string,
   dealItem?: (item: NormalOption) => NormalOption
 ): any[] => {
-  const format = keys || { label: 'name', value: 'id', id: 'id', children: 'children' }
+  const format = keys || {
+    label: 'name',
+    value: 'id',
+    id: 'id',
+    children: 'children'
+  }
   tree = tree?.map((node: any) => {
     const path = [...(pPath || []), node[format.id]]
     if (node.children && node.children.length) {
@@ -37,18 +48,24 @@ export const formatTree = (
 
   return tree
 }
-export const getFormatTreeNodeDeepestChild = (nodes?: NormalOption[]): NormalOption | undefined => {
+export const getFormatTreeNodeDeepestChild = (
+  nodes?: NormalOption[]
+): NormalOption | undefined => {
   if (!nodes?.length) return
   const firstHasChild = nodes.find(item => item.children?.length)
   if (firstHasChild) return getFormatTreeNodeDeepestChild(firstHasChild.children)
   return nodes[0]
 }
-export const getFormatTreeNode = (tree?: NormalOption[], key = 'value', value?: any): NormalOption | undefined => {
+export const getFormatTreeNode = (
+  tree?: NormalOption[],
+  key = 'value',
+  value?: any
+): NormalOption | undefined => {
   if (tree === undefined || value === undefined) return
   let item: NormalOption | undefined
   for (let i = 0; i < tree.length; i++) {
     item = tree[i]
-    if(item===undefined) continue
+    if (item === undefined) return item
     if (item[key] === value) {
       return item
     }
@@ -63,7 +80,11 @@ export const getFormatTreeNode = (tree?: NormalOption[], key = 'value', value?: 
  * @param spliter 分割符，比如','或者'.'
  * @returns
  */
-export const resolveKeyValue = (obj: any, key?: string, spliter?: string):string | undefined => {
+export const resolveKeyValue = (
+  obj: any,
+  key?: string,
+  spliter?: string
+): string | undefined => {
   if (!key) return
   if (spliter) {
     const keys = key.split(spliter)
@@ -160,14 +181,19 @@ export const fileStrToArr = (fileStr?: string): string[] => {
  * @param key
  * @returns
  */
-export const getUrlPramByName = (url: string, key: string): NormalOption | null => {
+export const getUrlPramByName = (
+  url: string,
+  key: string
+): NormalOption | null => {
   if (url && url.indexOf('?') !== -1) {
     const params = url.split('?')[1].split('&')
     const result: NormalOption = {
       label: '',
       value: ''
     }
-    const filterdres = params.filter(item => item.indexOf('=') !== -1 && item.indexOf(key) !== -1)
+    const filterdres = params.filter(
+      item => item.indexOf('=') !== -1 && item.indexOf(key) !== -1
+    )
     if (filterdres.length > 0) {
       result.label = key
       result.value = decodeURI(filterdres[0].split('=')[1])
@@ -177,7 +203,7 @@ export const getUrlPramByName = (url: string, key: string): NormalOption | null 
   }
   return null
 }
-export const removeUrlPramByName = (url:string, parameter:string) => {
+export const removeUrlPramByName = (url: string, parameter: string) => {
   const urlparts = url.split('?')
   if (urlparts.length >= 2) {
     // 参数名前缀
@@ -301,10 +327,16 @@ export const getMinimalCol = (
  * @param percent 指定百分比值：0-100
  * @returns
  */
-export const client = (type: 'width' | 'height', dom?: HTMLElement | string, percent?: number) => {
+export const client = (
+  type: 'width' | 'height',
+  dom?: HTMLElement | string,
+  percent?: number
+) => {
   let value = 0
   if (dom) {
-    dom = typeof dom === 'string' ? (document.querySelector(dom) as HTMLElement) : dom
+    dom = typeof dom === 'string'
+      ? (document.querySelector(dom) as HTMLElement)
+      : dom
   } else {
     dom = document.body
   }
@@ -328,10 +360,15 @@ export const client = (type: 'width' | 'height', dom?: HTMLElement | string, per
  * @param dom 指定元素
  * @returns
  */
-export const offset = (type: 'width' | 'height' | 'left' | 'top', dom?: HTMLElement | string) => {
+export const offset = (
+  type: 'width' | 'height' | 'left' | 'top',
+  dom?: HTMLElement | string
+) => {
   let value = 0
   if (dom) {
-    dom = typeof dom === 'string' ? (document.querySelector(dom) as HTMLElement) : dom
+    dom = typeof dom === 'string'
+      ? (document.querySelector(dom) as HTMLElement)
+      : dom
   } else {
     dom = document.body
   }
@@ -361,9 +398,14 @@ export const offset = (type: 'width' | 'height' | 'left' | 'top', dom?: HTMLElem
  * @param dom 指定的元素，default = body
  * @returns
  */
-export const scroll = (type: 'left' | 'top' | 'width' | 'height', dom?: HTMLElement | string) => {
+export const scroll = (
+  type: 'left' | 'top' | 'width' | 'height',
+  dom?: HTMLElement | string
+) => {
   if (dom) {
-    dom = typeof dom === 'string' ? (document.querySelector(dom) as HTMLElement) : dom
+    dom = typeof dom === 'string'
+      ? (document.querySelector(dom) as HTMLElement)
+      : dom
   } else {
     dom = document.body
   }
@@ -392,7 +434,7 @@ export const LastOfArr = (arr?: any[]) => (arr?.length ? arr.slice(-1)[0] : unde
  * @param opacity 通明度
  * @returns
  */
-export const hexToRgba = (hex:string, opacity:number) => {
+export const hexToRgba = (hex: string, opacity: number) => {
   let rgbaColor = ''
   const reg = /^#[\da-f]{6}$/i
   if (reg.test(hex)) {
@@ -429,7 +471,11 @@ export const formatterYear = 'YYYY'
 
 // 遍历对象，进行替换
 // val为对象或数组,children为深度，keys为替换对象
-export function traverse(val:any[], children: 'children' | string = 'children', keys: { label: 'name', value: 'id' } | any = { label: 'name', value: 'id' }) {
+export function traverse(
+  val: any[],
+  children: 'children' | string = 'children',
+  keys: { label: 'name'; value: 'id' } | any = { label: 'name', value: 'id' }
+) {
   val.map(obj => {
     if (obj) {
       for (const i in keys) {
@@ -444,8 +490,13 @@ export function traverse(val:any[], children: 'children' | string = 'children', 
   return val
 }
 // 对象扁平化
-export function objectFlattening(val: any, children: 'children' | string = 'children', type: 'original' | any = 'original', list: any[] = []) {
-  val.map((obj:any) => {
+export function objectFlattening(
+  val: any,
+  children: 'children' | string = 'children',
+  type: 'original' | any = 'original',
+  list: any[] = []
+) {
+  val.map((obj: any) => {
     if (obj) {
       if (type === 'original') {
         list.push(obj)

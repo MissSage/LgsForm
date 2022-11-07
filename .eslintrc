@@ -1,0 +1,86 @@
+{
+  "root": true,
+  "globals": {
+    "defineEmits": "readonly",
+    "defineProps": "readonly"
+  },
+  "parser": "vue-eslint-parser",
+  "extends": ["plugin:@typescript-eslint/recommended", "plugin:vue/vue3-recommended", "airbnb-base", "./.eslintrc-auto-import.json"],
+  "parserOptions": {
+    "parser": "@typescript-eslint/parser",
+    "ecmaVersion": 2020
+  },
+  "rules": {
+    "no-unused-vars": "off",
+    "camelcase": "off",
+    "no-use-before-define": "off",
+    "space-before-function-paren": 1,
+    "array-callback-return": "off",
+    "@typescript-eslint/no-var-requires": 0,
+    "@typescript-eslint/ban-types": [
+      0,
+      {
+        "types": {
+          // add a custom message to help explain why not to use it
+          "Symbol": "Don't use Foo because it is unsafe"
+        }
+      }
+    ],
+    "quotes": [
+      1,
+      "single",
+      {
+        "avoidEscape": true,
+        "allowTemplateLiterals": true
+      }
+    ],
+    // 要求或禁止使用分号而不是 ASI（这个才是控制行尾部分号的，）
+    "semi": [2, "never"],
+    //  数组和对象键值对最后一个逗号， never参数：不能带末尾的逗号, always参数：必须带末尾的逗号
+    "comma-dangle": [2, "never"],
+    "no-undef": 0,
+    "@typescript-eslint/no-explicit-any": ["off"],
+    "@typescript-eslint/explicit-module-boundary-types": "off",
+    "arrow-parens": ["error", "as-needed"],
+    "vue/no-multiple-template-root": "off",
+    "vue/no-v-for-template-key": 0,
+    "vue/multi-word-component-names": 0,
+    "dot-notation": 0,
+    "import/prefer-default-export": 0,
+    // "linebreak-style": ["error", "windows"],
+    "linebreak-style": 0,
+    "no-param-reassign": 0,
+    "arrow-body-style": 0,
+    "import/extensions": 0,
+    "import/no-unresolved": 0,
+    "object-curly-newline": 0,
+    "max-len": 0,
+    "vue/html-self-closing": 0,
+    "prefer-template": 0,
+    "no-unused-expressions": 0,
+    "consistent-return": 0,
+    "no-nested-ternary": 0,
+    "no-shadow": 0,
+    "no-console": 0,
+    "no-plusplus": 0,
+    "no-mixed-operators": 0,
+    "radix": 0,
+    "func-names": 0,
+    "no-restricted-syntax": 0,
+    "guard-for-in": 0,
+    "no-return-assign": 0,
+    "import/no-extraneous-dependencies": 0,
+    "default-param-last": 0,
+    "no-underscore-dangle": 0,
+    "no-loop-func": 0,
+    "no-bitwise": 0,
+    "no-useless-concat": 0,
+    "no-restricted-globals": 0,
+    "prefer-destructuring": 0,
+    "no-return-await": 0,
+    "vue/prop-name-casing": 0,
+    "vue/v-on-event-hyphenation": 0,
+    "vue/no-v-html": 0,
+    "no-multi-assign": 0
+  }
+}
