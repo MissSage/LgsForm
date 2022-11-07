@@ -13,6 +13,7 @@
     "skipLibCheck": true,
     "noEmit": true,
     "declaration": true,
+    "noImplicitAny": false,
     "forceConsistentCasingInFileNames": true,
     "suppressImplicitAnyIndexErrors": true,
     "types": ["vite/client"],
