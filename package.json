@@ -11,16 +11,12 @@
   "files": [
     "dist/*.js",
     "dist/*.css",
-    "lgsform.d.ts",
-    "src/packages",
-    "src/directives",
-    "src/types",
-    "src/utils"
+    ""
   ],
   "exports": {
     ".": {
-      "import": "./dist/lgsform.ts",
-      "require": "./dist/lgsform.umd.ts"
+      "import": "./dist/lgsform.js",
+      "require": "./dist/lgsform.umd.js"
     },
     "./dist/style.css": {
       "import": "./dist/style.css",
