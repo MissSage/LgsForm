@@ -29746,5 +29746,8 @@ const B$e = [Xo, vT, T$e], P$e = (e) => {
   install: P$e
 };
 export {
+  vT as AttrTable,
+  Xo as Button,
+  T$e as Form,
   _$e as default
 };

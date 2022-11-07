@@ -17,13 +17,23 @@
     "src/types",
     "src/utils"
   ],
+  "exports": {
+    ".": {
+      "import": "./dist/testpub.es.ts",
+      "require": "./dist/testpub.umd.ts"
+    },
+    "./dist/style.css": {
+      "import": "./dist/style.css",
+      "require": "./dist/style.css"
+    }
+  },
   "author": {
     "name": "ligoushi",
     "email": "184078718@qq.com"
   },
   "scripts": {
     "dev": "vite",
-    "build": "vue-tsc && vite build",
+    "build": "vue-tsc --noEmit && vite build",
     "preview": "vite preview"
   },
   "dependencies": {

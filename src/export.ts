@@ -1,7 +1,7 @@
 import { App } from 'vue'
-import Button from './components/Button.vue'
-import AttrTable from './components/AttrTable.vue'
-import Form from './components/Form.vue'
+import Button from './packages/components/Button.vue'
+import AttrTable from './packages/components/AttrTable.vue'
+import Form from './packages/components/Form.vue'
 
 const components = [Button, AttrTable, Form]
 
