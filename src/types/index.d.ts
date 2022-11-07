@@ -6,6 +6,4 @@ declare module 'vue'{
     Form: typeof FormIns
   }
 }
-declare module 'lgsform' {
-  export const Form: typeof FormIns
-}
+export const Form:typeof FormIns
