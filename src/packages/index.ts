@@ -8,6 +8,9 @@ const components = [Button, AttrTable, Form]
 const install = (app: App): void => {
   components.map(component => app.component(component.name, component))
 }
+export {
+  Button,AttrTable,Form
+}
 export default {
   install
 }
