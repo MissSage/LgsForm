@@ -11,3 +11,4 @@ const LgsForm:Plugin = {
 export {
   Form
 }
+export default LgsForm
