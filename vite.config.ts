@@ -22,6 +22,7 @@ export default defineConfig({
     rollupOptions: {
       external: ['vue', 'element-plus'],
       output: {
+        exports: 'named',
         inlineDynamicImports: true,
         globals: {
           vue: 'Vue',
