@@ -1,14 +1,13 @@
-import { App } from 'vue'
+import type { App, Plugin } from 'vue'
 import Form from './packages/es/Form'
 
 const components = [Form]
 
-const install = (app: App): void => {
-  components.map(component => app.component(component.name, component))
+const LgsForm:Plugin = {
+  install(app: App) {
+    components.map(component => app.component(component.name, component))
+  }
 }
 export {
   Form
-}
-export default {
-  install
 }
