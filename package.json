@@ -11,7 +11,8 @@
   "files": [
     "dist/*.js",
     "dist/*.css",
-    "src/types/*.d.ts"
+    "src/types",
+    "src/packages"
   ],
   "exports": {
     ".": {
