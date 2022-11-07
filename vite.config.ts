@@ -13,11 +13,12 @@ export default defineConfig({
         globals: {
           vue: 'Vue',
           'element-plus': 'elementPlus'
-        }
+        },
+        exports: "named"
       }
     },
     lib: {
-      entry: './src/components/index.ts',
+      entry: './src/packages/index.ts',
       name: 'lgsform'
     }
   }

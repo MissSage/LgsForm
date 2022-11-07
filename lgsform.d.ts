@@ -1,4 +1,7 @@
-type IButtonType =
+import { Plugin } from 'vue'
+import * as lgsform from './src/packages';
+export declare type SFCWithInstall<T> = T & Plugin;
+export type IButtonType =
   | 'default'
   | 'success'
   | 'warning'
@@ -6,9 +9,9 @@ type IButtonType =
   | 'primary'
   | 'danger'
   | 'text'
-type ISize = 'small' | 'large' | 'default' | ''
+export type ISize = 'small' | 'large' | 'default' | ''
 
-type IButton = {
+export type IButton = {
   type?: IButtonType | ((row?: any) => IButtonType)
   text?: string | ((row?: any) => string)
   icon?: string | ((row?: any) => string)
@@ -42,3 +45,5 @@ type IButton = {
   // 下拉菜单
   items?: any[]
 }
+export declare const Button: typeof lgsform.Button
+export default lgsform
