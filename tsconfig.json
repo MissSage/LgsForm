@@ -13,9 +13,19 @@
     "skipLibCheck": true,
     "noEmit": true,
     "declaration": true,
-    "forceConsistentCasingInFileNames": true
+    "forceConsistentCasingInFileNames": true,
+    "suppressImplicitAnyIndexErrors": true,
+    "types": ["vite/client"],
+    "paths": {
+      "@/*": [
+          "./src/*"
+      ],
+      "~@/*": [
+          "./src/*"
+      ]
+  }
   },
-  "include": ["src/**/*.ts", "src/**/*.d.ts", "src/**/*.tsx", "src/**/*.vue", "lgsform.d.ts", "lgsform.d.ts"],
+  "include": ["src/**/*.ts", "src/**/*.d.ts", "src/**/*.tsx", "src/**/*.vue", "src/types/interfaces.d.ts"],
   "references": [{ "path": "./tsconfig.node.json" }],
   "exclude": ["node_modules"]
 }

@@ -13,7 +13,8 @@
     "dist/*.css",
     "lgsform.d.ts",
     "src/packages",
-    "src/directives"
+    "src/directives",
+    "src/types"
   ],
   "author": {
     "name": "ligoushi",
