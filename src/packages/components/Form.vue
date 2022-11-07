@@ -428,6 +428,7 @@ defineExpose({
 })
 </script>
 <style lang="scss">
+@import url('@/styles/element-plus/index.scss');
 .form-flex {
   padding: 0;
 }
