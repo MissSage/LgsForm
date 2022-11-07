@@ -7,3 +7,6 @@ declare module 'vue'{
   }
 }
 export const Form:typeof FormIns
+export default {
+  Form
+}
