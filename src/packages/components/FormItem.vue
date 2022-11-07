@@ -645,7 +645,7 @@
     :size="computedSize"
     @change="handleChange"
   ></Tabs>
-  <IconSelector
+  <!-- <IconSelector
     v-else-if="config.type === 'icon-selector'"
     v-model="state.value"
     style="width: 100%"
@@ -654,7 +654,7 @@
     :clearable="config.clearable !== false"
     :default-type="config.defaultType"
     :placeholder="config.placeholder"
-  ></IconSelector>
+  ></IconSelector> -->
   <TiniImageUploader
     v-else-if="config.type === 'image-tiny'"
     v-model="state.value"
@@ -754,7 +754,10 @@ import RangeSelecter from './RangeSelecter.vue'
 import ColorPicker from './ColorPicker.vue'
 import FormWangeditor from './FormWangeditor.vue'
 import List from './List.vue'
-
+import TiniImageUploader from './TiniImageUploader.vue'
+import FormTree from './FormTree.vue'
+import Tabs from './Tabs.vue'
+// import IconSelector from './IconSelector.vue'
 const props = defineProps<{
   modelValue?: string | number | Array<any> | Record<string, any> | boolean
   row?: Record<string, any>

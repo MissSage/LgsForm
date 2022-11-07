@@ -1,13 +1,18 @@
 <template>
-  <Button :config="config"></Button>
+  <Form ref="refForm" :config="FormConfig" />
 </template>
 <script lang="ts" setup>
-import { ref } from 'vue';
-import Button from '../packages/Button/Button.vue'
-const a = ref<InstanceType<typeof Button>>()
-const config: IButton = {
-  text: '组件',
-  perm: true
-}
+import { reactive, ref } from 'vue';
+import Form from '../packages/es/Form'
+const a = ref<InstanceType<typeof Form>>()
+const FormConfig = reactive<IFormConfig>({
+  group: [
+    {
+      fields: [
+        {type: 'input',field: 'aaa',label: 'bbb',}
+      ]
+    }
+  ]
+})
 
 </script>
