@@ -1,2 +1,2 @@
-import Form from '../packages/Form.vue'
-export default typeof Form
+import Form from '../../packages/es/Form'
+export default Form
