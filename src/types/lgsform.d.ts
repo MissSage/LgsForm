@@ -1,0 +1,31 @@
+type SFCWithInstall<T> = T & { install?:(app: App)=> void };
+// import FormIns from '../packages/components/Form.vue'
+export declare const AttrTable: SFCWithInstall<typeof import('../packages/components/AttrTable.vue')>
+export declare const AttrTableCellContent: SFCWithInstall<typeof import('../packages/components/AttrTableCellContent.vue')>
+export declare const AvatarUploader: SFCWithInstall<typeof import('../packages/components/AvatarUploader.vue')>
+export declare const Button: SFCWithInstall<typeof import('../packages/components/Button.vue')>
+export declare const CardSearch: SFCWithInstall<typeof import('../packages/components/CardSearch.vue')>
+export declare const CardTable: SFCWithInstall<typeof import('../packages/components/CardTable.vue')>
+export declare const ColorPicker: SFCWithInstall<typeof import('../packages/components/ColorPicker.vue')>
+export declare const DialogForm: SFCWithInstall<typeof import('../packages/components/DialogForm.vue')>
+export declare const FieldSet: SFCWithInstall<typeof import('../packages/components/FieldSet.vue')>
+export declare const Form: SFCWithInstall<typeof import('../packages/components/Form.vue')>
+export declare const FormItem: SFCWithInstall<typeof import('../packages/components/FormItem.vue')>
+export declare const FormTable: SFCWithInstall<typeof import('../packages/components/FormTable.vue')>
+export declare const FormTableColumn: SFCWithInstall<typeof import('../packages/components/FormTableColumn.vue')>
+export declare const FormTree: SFCWithInstall<typeof import('../packages/components/FormTree.vue')>
+export declare const FormWangeditor: SFCWithInstall<typeof import('../packages/components/FormWangeditor.vue')>
+export declare const ImgViewer: SFCWithInstall<typeof import('../packages/components/ImgViewer.vue')>
+export declare const ImportButton: SFCWithInstall<typeof import('../packages/components/ImportButton.vue')>
+export declare const InlineForm: SFCWithInstall<typeof import('../packages/components/InlineForm.vue')>
+export declare const List: SFCWithInstall<typeof import('../packages/components/List.vue')>
+export declare const Pagination: SFCWithInstall<typeof import('../packages/components/Pagination.vue')>
+export declare const RangeSelecter: SFCWithInstall<typeof import('../packages/components/RangeSelecter.vue')>
+export declare const Search: SFCWithInstall<typeof import('../packages/components/Search.vue')>
+export declare const SearchMore: SFCWithInstall<typeof import('../packages/components/SearchMore.vue')>
+export declare const Tabs: SFCWithInstall<typeof import('../packages/components/Tabs.vue')>
+export declare const Tag: SFCWithInstall<typeof import('../packages/components/Tag.vue')>
+export declare const TagGroup: SFCWithInstall<typeof import('../packages/components/TagGroup.vue')>
+export declare const TiniImageUploader: SFCWithInstall<typeof import('../packages/components/TiniImageUploader.vue')>
+export declare const Videor: SFCWithInstall<typeof import('../packages/components/Videor.vue')>
+export declare const Voicer: SFCWithInstall<typeof import('../packages/components/Voicer.vue')>
