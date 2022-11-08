@@ -12,7 +12,8 @@
     "dist/*.js",
     "dist/*.css",
     "src/types",
-    "src/packages"
+    "src/packages",
+    "index.d.ts"
   ],
   "exports": {
     ".": {
