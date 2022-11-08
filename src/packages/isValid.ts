@@ -1,3 +1,5 @@
+import { IFormItem, IFormSelect, IFormUser } from "@/types"
+
 export const resolveValue = (config: IFormItem, val?: any) => {
   switch (config.type) {
     case 'checkbox':

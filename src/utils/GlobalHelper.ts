@@ -1,3 +1,5 @@
+import { NormalOption } from "@/types"
+
 /**
  * treeData格式化
  * @param tree
