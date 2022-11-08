@@ -9,11 +9,11 @@
   "license": "ISC",
   "description": "a package about formusage",
   "files": [
-    "dist/*.js",
-    "dist/*.css",
+    "dist",
     "src/types",
     "src/packages",
-    "index.d.ts"
+    "global.d.ts",
+    "styles"
   ],
   "exports": {
     ".": {

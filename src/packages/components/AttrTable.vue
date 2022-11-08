@@ -12,10 +12,7 @@
               <span>{{ attr.label }}</span>
             </div>
           </td>
-          <td
-            class="value width100"
-            :class="theme"
-          >
+          <td class="value width100" :class="theme">
             <div class="cell">
               <span>{{ attr.value }}</span>
             </div>
@@ -28,20 +25,13 @@
           :key="i"
           @click="() => handleRowClick && handleRowClick(row)"
         >
-          <template
-            v-for="(td, j) in row"
-            :key="j"
-          >
+          <template v-for="(td, j) in row" :key="j">
             <td class="name">
               <div class="cell">
                 <span>{{ td.label }}</span>
               </div>
             </td>
-            <td
-              class="value"
-              :class="theme"
-              :colspan="td.cols"
-            >
+            <td class="value" :class="theme" :colspan="td.cols">
               <div class="cell">
                 <span>{{ td.value }}</span>
               </div>
@@ -55,20 +45,13 @@
           :key="i"
           @click="() => handleRowClick && handleRowClick(row)"
         >
-          <template
-            v-for="(td, j) in row"
-            :key="j"
-          >
+          <template v-for="(td, j) in row" :key="j">
             <td class="name namewidth">
               <div class="cell">
                 <span>{{ td.label }}</span>
               </div>
             </td>
-            <td
-              class="value"
-              :class="theme"
-              :colspan="td.cols"
-            >
+            <td class="value" :class="theme" :colspan="td.cols">
               <div class="cell">
                 <AttrTableCellContent
                   :config="td"
@@ -80,31 +63,29 @@
         </tr>
       </template>
       <template v-if="!attributes?.length && !rows?.length && !columns?.length">
-        <div class="empty">
-          暂无内容
-        </div>
+        <div class="empty">暂无内容</div>
       </template>
     </tbody>
   </table>
 </template>
-<script lang="ts" setup>import { IAttrTableRow } from '../../../global';
+<script lang="ts" setup>
+import { IAttrTableRow } from "../../../global";
 
-
-const emit = defineEmits<{(e: 'row-click', row: any, data?: any) }>()
+const emit = defineEmits<{ (e: "row-click", row: any, data?: any) }>();
 const props = defineProps<{
   attributes?: {
-    label: string
-    value: any
-    data?: any
-  }[]
-  rows?: IAttrTableRow[][]
-  data?: any
-  columns?: IAttrTableRow[][]
-  theme?: 'darkblue' | 'dark'
-}>()
-const handleRowClick = row => {
-  emit('row-click', row, props.data)
-}
+    label: string;
+    value: any;
+    data?: any;
+  }[];
+  rows?: IAttrTableRow[][];
+  data?: any;
+  columns?: IAttrTableRow[][];
+  theme?: "darkblue" | "dark";
+}>();
+const handleRowClick = (row) => {
+  emit("row-click", row, props.data);
+};
 </script>
 <style lang="scss" scoped>
 .attr-table {
