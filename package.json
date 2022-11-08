@@ -1,7 +1,7 @@
 {
   "name": "@missssage/lgsform",
   "private": false,
-  "version": "1.1.39",
+  "version": "1.1.40",
   "type": "module",
   "main": "dist/lgsform.js",
   "types": "lgsform.d.ts",
