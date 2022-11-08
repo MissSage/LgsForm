@@ -124,7 +124,7 @@
   </div>
 </template>
 <script lang="ts" setup>
-import { IFormList } from '../../..';
+import { IFormList } from '../../../global';
 import { ElCheckboxGroup, ElCheckbox } from 'element-plus'
 import { reactive, watch, computed } from 'vue'
 import FormItem from './FormItem.vue'

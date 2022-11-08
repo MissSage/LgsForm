@@ -22,7 +22,7 @@
   </div>
 </template>
 <script lang="ts" setup>
-import { IFormTree, ISize } from '../../..';
+import { IFormTree, ISize } from '../../../global';
 import { ElTree } from 'element-plus'
 import { onMounted, reactive, ref, watch } from 'vue'
 

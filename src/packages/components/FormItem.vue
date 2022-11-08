@@ -776,7 +776,7 @@ import List from './List.vue'
 import TiniImageUploader from './TiniImageUploader.vue'
 import FormTree from './FormTree.vue'
 import Tabs from './Tabs.vue'
-import { IFormDate, IFormDateRange, IFormItem, ISize } from '../../..'
+import { IFormDate, IFormDateRange, IFormItem, ISize } from '../../../global'
 import Input from './Input.vue'
 // import IconSelector from './IconSelector.vue'
 const props = defineProps<{

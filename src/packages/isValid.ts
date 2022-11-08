@@ -1,4 +1,4 @@
-import { IFormItem, IFormSelect, IFormUser } from "../.."
+import { IFormItem, IFormSelect, IFormUser } from "../../global"
 
 export const resolveValue = (config: IFormItem, val?: any) => {
   switch (config.type) {

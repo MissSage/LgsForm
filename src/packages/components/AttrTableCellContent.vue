@@ -151,7 +151,7 @@
   </template>
 </template>
 <script lang="ts" setup>
-import { IAttrTableRow } from '../../..';
+import { IAttrTableRow } from '../../../global';
 import { resolveElImageData } from '@/utils/GlobalHelper'
 
 defineProps<{

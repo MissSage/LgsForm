@@ -155,7 +155,7 @@ import Button from './Button.vue'
 import FieldSet from './FieldSet.vue'
 import FormItem from './FormItem.vue'
 import FormTable from './FormTable.vue'
-import { IFormConfig, IFormFieldGroup, IFormItem } from '../../..'
+import { IFormConfig, IFormFieldGroup, IFormItem } from '../../../global'
 
 const props = defineProps<{
   config: IFormConfig

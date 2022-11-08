@@ -18,14 +18,14 @@
   "exports": {
     ".": {
       "import": "./dist/lgsform.js",
-      "require": "./dist/lgsform.umd.js"
+      "require": "./dist/lgsform.umd.cjs"
     },
     "./style.css": {
       "import": "./dist/style.css",
       "require": "./dist/style.css"
     }
   },
-  "typings": "index.d.ts",
+  "typings": "global.d.ts",
   "author": {
     "name": "ligoushi",
     "email": "184078718@qq.com"

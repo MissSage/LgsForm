@@ -30,7 +30,7 @@
 </template>
 
 <script lang="ts" setup name="ColorPicker">
-import { ColorAttrType, ISize } from '../../..';
+import { ColorAttrType, ISize } from '../../../global';
 import { Chrome } from '@ckpack/vue-color'
 import { ElPopover } from 'element-plus'
 import { ref, reactive, watch } from 'vue'

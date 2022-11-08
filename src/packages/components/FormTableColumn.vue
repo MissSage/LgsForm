@@ -200,7 +200,7 @@ import { computed } from 'vue'
 import { resolveElImageData } from '@/utils/GlobalHelper'
 import Voicer from './Voicer.vue'
 import Tag from './Tag.vue'
-import { IFormTableColumn } from '../../..'
+import { IFormTableColumn } from '../../../global'
 
 const emit = defineEmits(['update:modelValue', 'change'])
 const props = defineProps<{

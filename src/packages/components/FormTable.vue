@@ -305,7 +305,7 @@ import Pagination from './Pagination.vue'
 import FormItem from './FormItem.vue'
 import { fileStrToArr } from '@/utils/GlobalHelper'
 import Button from './Button.vue'
-import { ISize, ITable } from '../../..'
+import { ISize, ITable } from '../../../global'
 
 const props = defineProps<{
   config: ITable

@@ -1,4 +1,4 @@
-import { NormalOption } from "../.."
+import { NormalOption } from "../../global"
 
 /**
  * treeData格式化
