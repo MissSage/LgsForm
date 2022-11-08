@@ -1,4 +1,4 @@
-import { NormalOption } from "@/types"
+import { NormalOption } from "../.."
 
 /**
  * treeData格式化

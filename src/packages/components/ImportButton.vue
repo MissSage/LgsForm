@@ -10,7 +10,7 @@
 </template>
 
 <script lang="ts" setup>
-import { IButton } from '@/types';
+import { IButton } from '../../..';
 import { ElUpload, ElButton } from 'element-plus'
 
 const props = defineProps<{

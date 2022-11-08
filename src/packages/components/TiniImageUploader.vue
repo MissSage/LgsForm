@@ -51,7 +51,7 @@ import { ElButton, ElIcon, ElUpload, ElImage } from 'element-plus'
 import { Picture } from '@element-plus/icons'
 import { SLMessage } from '@/utils/Message'
 import Button from './Button.vue'
-import { ISize, ITinyImageUploader } from '@/types';
+import { ISize, ITinyImageUploader } from '../../..';
 
 defineProps<{
   modelValue?: string

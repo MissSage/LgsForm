@@ -77,7 +77,7 @@ import { reactive, toRefs, onMounted, watch, ref } from 'vue'
 import { ElForm } from 'element-plus'
 import SearchMore from './SearchMore.vue'
 import FormItem from './FormItem.vue'
-import { IFormItem, ISearch, MoreFilterConditions } from '@/types';
+import { IFormItem, ISearch, MoreFilterConditions } from '../../..';
 
 const refForm = ref<InstanceType<typeof ElForm>>()
 const refSearchMore = ref<InstanceType<typeof SearchMore>>()

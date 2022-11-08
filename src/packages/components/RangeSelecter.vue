@@ -181,7 +181,7 @@
   </div>
 </template>
 <script lang="ts" setup>
-import { IRangeInput } from '@/types';
+import { IRangeInput } from '../../..';
 import { ElSelect, ElOption, ElDatePicker, ElInput } from 'element-plus'
 import { ref } from 'vue'
 

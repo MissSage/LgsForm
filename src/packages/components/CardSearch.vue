@@ -7,7 +7,7 @@
   </SLCard>
 </template>
 <script lang="ts" setup>
-import { ISearch } from '@/types';
+import { ISearch } from '../../..';
 import { computed, ref } from 'vue'
 import Search from './Search.vue'
 import SLCard from './SLCard.vue'

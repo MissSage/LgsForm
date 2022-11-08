@@ -62,7 +62,7 @@ import { reactive, ref, toRefs } from 'vue'
 import SLCard from './SLCard.vue'
 import FormTable from './FormTable.vue'
 import FormItem from './FormItem.vue'
-import { ICardTable } from '@/types';
+import { ICardTable } from '../../..';
 
 defineProps<{
   config: ICardTable

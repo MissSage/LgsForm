@@ -68,7 +68,7 @@
     </template>
   </el-input>
 </template>
-<script lang="ts" setup>import { IFormInput, ISize } from '@/types';
+<script lang="ts" setup>import { IFormInput, ISize } from '../../..';
 import { ElInput } from 'element-plus';
 import { reactive, computed, watch } from 'vue';
 

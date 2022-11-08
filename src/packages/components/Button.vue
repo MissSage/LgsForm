@@ -59,7 +59,7 @@
   </el-button>
 </template>
 <script lang="ts" setup>
-import { IButton, ISize } from '@/types';
+import { IButton, ISize } from '../../..';
 import { ElButton, ElIcon } from 'element-plus'
 import { computed } from 'vue'
 

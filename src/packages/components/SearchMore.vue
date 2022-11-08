@@ -51,7 +51,7 @@
 </template>
 
 <script lang="ts" setup>
-import { IFormItem, ISize } from '@/types';
+import { IFormItem, ISize } from '../../..';
 import { ElButton, ElForm, ElFormItem } from 'element-plus'
 import { reactive, ref } from 'vue'
 import FormItem from './FormItem.vue'
