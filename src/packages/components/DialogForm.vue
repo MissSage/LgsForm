@@ -61,6 +61,7 @@
 </template>
 
 <script lang="ts" setup>
+import { IDialogFormConfig } from '@/types';
 import { ElDialog, ElButton } from 'element-plus'
 import { reactive, ref, watch } from 'vue'
 import Button from './Button.vue'

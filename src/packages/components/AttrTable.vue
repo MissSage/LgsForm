@@ -87,7 +87,8 @@
     </tbody>
   </table>
 </template>
-<script lang="ts" setup>
+<script lang="ts" setup>import { IAttrTableRow } from '@/types';
+
 
 const emit = defineEmits<{(e: 'row-click', row: any, data?: any) }>()
 const props = defineProps<{

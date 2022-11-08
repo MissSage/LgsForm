@@ -45,6 +45,7 @@
   </div>
 </template>
 <script lang="ts" setup>
+import { ISize, ITabs } from '@/types';
 import { ElTabs, ElTabPane } from 'element-plus'
 import { reactive, watch } from 'vue'
 import Button from './Button.vue'

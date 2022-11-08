@@ -29,6 +29,7 @@ import { VideoPlay, VideoPause } from '@element-plus/icons'
 import { ElIcon } from 'element-plus'
 import { ref, reactive } from 'vue'
 import { downloadUrl } from '@/utils/fileHelper'
+import { ISize } from '@/types';
 
 const refAudio = ref<HTMLAudioElement>()
 defineProps<{

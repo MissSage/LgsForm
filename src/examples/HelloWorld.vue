@@ -5,6 +5,7 @@
 import { reactive, ref } from 'vue';
 // import Form from '../packages/es/Form'
 import {Form } from '../../dist/lgsform.js'
+import { IFormConfig } from '@/types';
 const a = ref<InstanceType<typeof Form>>()
 const FormConfig = reactive<IFormConfig>({
   group: [

@@ -35,6 +35,7 @@ import { Plus } from '@element-plus/icons-vue'
 import { ElIcon, ElUpload, UploadProps } from 'element-plus'
 import { ref, watch } from 'vue'
 import { SLMessage } from '@/utils/Message'
+import { ISize } from '@/types';
 
 const props = defineProps<{
   modelValue?: string

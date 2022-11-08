@@ -1,4 +1,4 @@
-type IButtonType =
+export type IButtonType =
   | 'default'
   | 'success'
   | 'warning'
@@ -6,8 +6,8 @@ type IButtonType =
   | 'primary'
   | 'danger'
   | 'text'
-type ISize = 'small' | 'large' | 'default' | ''
-type NormalOption = {
+export type ISize = 'small' | 'large' | 'default' | ''
+export type NormalOption = {
   id?: string
   label: string
   value: any
@@ -23,13 +23,13 @@ type NormalOption = {
   /** 单位 表单中值第一个参数为值，第二个参数为表单数据，第三个值为当前表单元素的配置 */
   unit?: string | ((val: any, row: any, config: any) => any)
 }
-type MoreFilterConditions = {
+export type MoreFilterConditions = {
   label?: string
   value?: any
   filter?: IFormItem
   formatter?: (val: any, row?: any, filter?: IFormItem) => any
 }
-type IButton = {
+export type IButton = {
   type?: IButtonType | ((row?: any) => IButtonType)
   text?: string | ((row?: any) => string)
   icon?: string | ((row?: any) => string)
@@ -64,7 +64,8 @@ type IButton = {
   items?: any[]
 }
 
-interface IFormItemBase {
+export interface IFormItemBase {
+  refId?: string
   id?: string
   type: string
   field?: string
@@ -83,7 +84,7 @@ interface IFormItemBase {
     | ((value: any, row: any, formItem: IFormItem) => Record<string, any>)
   placeholder?: string
   readonly?: boolean | ((value: any, row: any, formItem: IFormItem) => boolean)
-  rules?: any
+  rules?: IFormItemRule
   aInfo?: boolean
   size?: ISize
   clearable?: boolean
@@ -93,18 +94,14 @@ interface IFormItemBase {
    */
   unit?: string
 
-  suffix?:
-    | string
-    | ((option: NormalOption, val: any, row: any, config: IFormRadio) => string)
-  prefix?:
-    | string
-    | ((option: NormalOption, val: any, row: any, config: IFormRadio) => string)
-  suffixStyle?:
-    | Record<string, any>
-    | ((option: NormalOption, val: any, row: any, config: IFormRadio) => any)
-  prefixStyle?:
-    | Record<string, any>
-    | ((option: NormalOption, val: any, row: any, config: IFormRadio) => any)
+  /**
+   * 输入框尾部内容，只对非 type="textarea" 有效
+   */
+  suffix?: string
+  /**
+   * 输入框头部内容，只对非 type="textarea" 有效
+   */
+  prefix?: string
   /**
    * 输入框前置内容，只对非 type="textarea" 有效
    */
@@ -115,6 +112,7 @@ interface IFormItemBase {
    */
   append?: string | IFormSelect
   appendDefault?: any
+  appendBtns?: IButton[]
   /** 表单元素的盒子的样式 el-form-item */
   itemContainerStyle?: string | Record<string, any>
   colStyles?: Record<string, any> | string
@@ -136,35 +134,99 @@ interface IFormItemBase {
    */
   formatter?: (val, row?, config?: IFormItem) => any
   /** 当值变化时的回调，这个只会在能够绑定值的item中都会生效 Only effect with bind a value */
-  onChange?: (...args: any[]) => void
+  onChange?: (...args: any[]) => any
+  /** 在点击由 clearable 属性生成的清空按钮时触发 */
+  onClear?: (...args: any[]) => any
+  onFocus?: (...args: any[]) => any
+  onBlur?: (...args: any[]) => any
 }
-
-interface IFormInput extends IFormItemBase {
-  type: 'input'
-  minlength?: string | number
-  maxlength?: string | number
+export interface IFormInput extends IFormItemBase {
+  type: 'input' | 'password' | 'textarea'
+  inputType?:
+    | 'text'
+    | 'textarea'
+    | 'button'
+    | 'checkbox'
+    | 'color'
+    | 'date'
+    | 'datetime-local'
+    | 'email'
+    | 'file'
+    | 'image'
+    | 'month'
+    | 'number'
+    | 'password'
+    | 'radio'
+    | 'range'
+    | 'reset'
+    | 'search'
+    | 'submit'
+    | 'tel'
+    | 'time'
+    | 'url'
+    | 'week'
+  /** 最大输入长度 */
+  maxlength?: number | string
+  /** 最小输入长度 */
+  minlength?: number | string
+  /** 显示统计数字 */
+  showWordLimit?: boolean
+  /** 显示切换密码图标 */
+  showPassword?: boolean
+  /** 自定义前缀图标 */
+  prefixIcon?: any
+  /** 自定义后缀图标 */
+  suffixIcon?: any
+  /** 输入框行数，仅type=textarea时生效 */
+  rows?: number
+  /** 自适应文本域,仅type=textarea时生效，当值为Object时，属性有： minRows:number,maxRows: number */
+  autosize?: boolean | Object
+  /** 单独配置autosize的属性：最大行数, 配置了autosize时不生效 */
+  maxRow?: number
+  /** 单独配置autosize的属性：最小行数, 配置了autosize时不生效 */
+  minRow?: number
+  /** 原生autocomplete属性 */
+  autocomplete?: boolean
+  disabled?: boolean | ((value: any, row: any, formItem: IFormItem) => boolean)
+  /** 最大值 */
+  max?: number
+  /** 最小值 */
+  min?: number
+  /** 设置输入字段 的合法数字间隔 */
+  step?: number
+  /** 控制是否能被用户缩放 */
+  resize?: 'none' | 'both' | 'horizontal' | 'vertical'
+  /** 自动获得焦点 */
+  autofocus?: boolean
+  /** 用来控制通过tab切换输入框焦点时的顺序 */
+  tabindex?: number | string
+  /** 是否在输入时触发表单的校验 */
+  validateEvent?: boolean
+  /** input元素或textarea元素的style */
+  inputStyle?: Object
+  controlPosition?: 'right'
 }
-interface IFormInputNumber extends IFormItemBase {
+export interface IFormInputNumber extends IFormItemBase {
   type: 'input-number'
 }
-interface IFormText extends IFormItemBase {
+export interface IFormText extends IFormItemBase {
   type: 'text'
 }
-interface IFormPassword extends IFormItemBase {
+export interface IFormPassword extends IFormItemBase {
   type: 'password'
 }
-interface IFormTextArea extends IFormItemBase {
+export interface IFormTextArea extends IFormItemBase {
   type: 'textarea'
   minRow?: number
   maxRow?: number
 }
-interface IFormNumber extends IFormItemBase {
+export interface IFormNumber extends IFormItemBase {
   type: 'number'
   min?: number
   max?: number
   controlPosition?: 'right'
 }
-interface IFormSelect extends IFormItemBase {
+export interface IFormSelect extends IFormItemBase {
   type: 'select'
   multiple?: boolean
   allowCreate?: boolean
@@ -176,31 +238,31 @@ interface IFormSelect extends IFormItemBase {
   setOptionMethod?: (config: any, row: any) => any
   disableOption?: (option?: any, value?: any, row?: any) => boolean
 }
-interface ICascaderProps {
+export interface ICascaderProps {
   checkStrictly?: boolean
   label?: string
   value?: string
   children?: string
   emitPath?: boolean
 }
-interface ISelectTreeProps {
+export interface ISelectTreeProps {
   label?: string
   children: string
   isLeaf?: string
   disabled?: string
   class?: string
 }
-interface IFormCascader extends IFormItemBase {
+export interface IFormCascader extends IFormItemBase {
   type: 'cascader'
   props?: ICascaderProps
   multiple?: boolean
   options?: NormalOption[]
 }
-interface IFormCheckbox extends IFormItemBase {
+export interface IFormCheckbox extends IFormItemBase {
   type: 'checkbox'
   options?: NormalOption[]
 }
-interface IFormRadio extends IFormItemBase {
+export interface IFormRadio extends IFormItemBase {
   type: 'radio' | 'radio-button'
   options?: NormalOption[]
   suffix?:
@@ -222,7 +284,7 @@ interface IFormRadio extends IFormItemBase {
   itemClick?: () => any
 }
 
-interface IFormSwitch extends IFormItemBase {
+export interface IFormSwitch extends IFormItemBase {
   type: 'switch'
   activeText?: string
   inActiveText?: string
@@ -234,14 +296,14 @@ interface IFormSwitch extends IFormItemBase {
   inActiveValue?: string | boolean
   inlinePrompt?: boolean
 }
-interface IFormDate extends IFormItemBase {
+export interface IFormDate extends IFormItemBase {
   type: 'date' | 'datetime' | 'month' | 'year'
   min?: string
   max?: string
   format?: string
   textFormat?: string
 }
-interface IFormDateRange extends IFormItemBase {
+export interface IFormDateRange extends IFormItemBase {
   type: 'daterange' | 'datetimerange' | 'monthrange' | 'yearrange'
   min?: string
   max?: string
@@ -249,17 +311,17 @@ interface IFormDateRange extends IFormItemBase {
   textFormat?: string
   rangeSeparator?: string
 }
-interface IFormTime extends IFormItemBase {
+export interface IFormTime extends IFormItemBase {
   type: 'time'
   min?: string
   max?: string
   format?: string
   isRange?: boolean
 }
-interface IFormEditor extends IFormItemBase {
+export interface IFormEditor extends IFormItemBase {
   type: 'editor'
 }
-interface IFormUploader extends IFormItemBase {
+export interface IFormUploader extends IFormItemBase {
   type: 'uploader'
   desc?: string
   multiple?: boolean
@@ -273,19 +335,19 @@ interface IFormUploader extends IFormItemBase {
   removeBefore?: (...args: any[]) => void
   fileClick?: (...args: any[]) => void
 }
-interface IFormImgUploader extends IFormItemBase {
+export interface IFormImgUploader extends IFormItemBase {
   type: 'image'
   url?: string
   limit?: number
   multiple?: boolean
   returnType?: 'arrStr' | 'comma'
 }
-interface IAvatarUploader extends IFormItemBase {
+export interface IAvatarUploader extends IFormItemBase {
   type: 'avatar'
   url?: string
   tips?: string
 }
-interface IFormFileUploader extends IFormItemBase {
+export interface IFormFileUploader extends IFormItemBase {
   type: 'file'
   url?: string
   limit?: number
@@ -293,12 +355,12 @@ interface IFormFileUploader extends IFormItemBase {
   returnType?: 'arrStr' | 'comma'
   tips?: string
 }
-interface IFormAMap extends IFormItemBase {
+export interface IFormAMap extends IFormItemBase {
   type: 'amap'
   required?: boolean
   resultType?: 'str' | 'arrStr'
 }
-interface IFormUser extends IFormItemBase {
+export interface IFormUser extends IFormItemBase {
   type: 'user'
   height?: string
   width?: string
@@ -308,7 +370,7 @@ interface IFormUser extends IFormItemBase {
   multiple?: boolean
   checkUsers?: (users: any) => void
 }
-interface TagNormalOption extends NormalOption {
+export interface TagNormalOption extends NormalOption {
   width?: string | number
   data?: {
     suffix?: string
@@ -318,7 +380,7 @@ interface TagNormalOption extends NormalOption {
     style?: Record<string, any>
   }
 }
-interface ITagGroup extends IFormItemBase {
+export interface ITagGroup extends IFormItemBase {
   type: 'tags'
   cancelable?: boolean
   options: TagNormalOption[]
@@ -334,7 +396,7 @@ interface ITagGroup extends IFormItemBase {
   btns?: IButton[]
 }
 
-interface IFormTableColumn {
+export interface IFormTableColumn {
   /** 表列头的表单配置 */
   headerFormItemConfig?: IFormItem
   /**
@@ -428,7 +490,7 @@ interface IFormTableColumn {
   /** 隐藏列 */
   hidden?: boolean | (() => boolean)
 }
-interface IPagination {
+export interface IPagination {
   /** 当页码和条数改变时会触发此方法，设置此方法将使handSize和handlePage失效 */
   refreshData?: (pageSize: { page: number; size: number }) => any
   hide?: boolean
@@ -442,14 +504,14 @@ interface IPagination {
   handleSize?: (size: number) => any
   handlePage?: (page: number) => any
 }
-interface ITableIndex {
+export interface ITableIndex {
   label?: string
   width?: string
   align?: string
   fixed?: 'right'
   showRank?: boolean
 }
-interface ITable {
+export interface ITable {
   title?: string
   loading?: boolean
   /**
@@ -560,11 +622,11 @@ interface ITable {
    */
   handleRowDbClick?: (row: any) => any
 }
-interface IFormTable extends IFormItemBase {
+export interface IFormTable extends IFormItemBase {
   type: 'table'
   config: ITable
 }
-interface IFormCardTable extends IFormTable {
+export interface IFormCardTable extends IFormTable {
   type: 'card-table'
   /**
    * 表格标题
@@ -585,7 +647,7 @@ interface IFormCardTable extends IFormTable {
     group?: IFormFieldGroup
   ) => any
 }
-interface ICardTable extends ITable {
+export interface ICardTable extends ITable {
   title?: string
   titleRight?: {
     className?: string
@@ -601,11 +663,11 @@ interface ICardTable extends ITable {
     group?: IFormFieldGroup
   ) => any
 }
-interface IFormButtonGroup extends IFormItemBase {
+export interface IFormButtonGroup extends IFormItemBase {
   type: 'btn-group'
   btns: IButton[]
 }
-interface ITabs extends IFormItemBase {
+export interface ITabs extends IFormItemBase {
   type: 'tabs'
   closable?: boolean
   theme?: 'darkblue' | 'dark'
@@ -627,7 +689,7 @@ interface ITabs extends IFormItemBase {
   // 标签的宽度是否自撑开
   stretch?: boolean
 }
-interface IIconSelector extends IFormItemBase {
+export interface IIconSelector extends IFormItemBase {
   type: 'icon-selector'
   title?: string
   defaultType?: 'ali' | 'ele' | 'awe' | ''
@@ -635,10 +697,10 @@ interface IIconSelector extends IFormItemBase {
 
   onClear?: () => void
 }
-interface IProgress extends IFormItemBase {
+export interface IProgress extends IFormItemBase {
   type: 'progress'
 }
-interface ISelectTree extends IFormItemBase {
+export interface ISelectTree extends IFormItemBase {
   type: 'select-tree'
   /** 绑定数据 */
   options: NormalOption[]
@@ -658,7 +720,7 @@ interface ISelectTree extends IFormItemBase {
   lazyLoad?: (node: any, resolve) => void
   nodeClick?: (data: NormalOption, node: any, component: any) => any
 }
-interface IAttrTableRow {
+export interface IAttrTableRow {
   label?: string
   value?: string
   prop?: string
@@ -726,10 +788,10 @@ interface IAttrTableRow {
    */
   formatter?: (row: any, value: any, field: string) => any
 }
-interface TinyImageUploaderExtraButton extends IButton {
+export interface TinyImageUploaderExtraButton extends IButton {
   click: (row?: { value?: any; config?: ITinyImageUploader }) => void
 }
-interface ITinyImageUploader extends IFormItemBase {
+export interface ITinyImageUploader extends IFormItemBase {
   type: 'image-tiny'
   url?: string
   /**
@@ -739,7 +801,7 @@ interface ITinyImageUploader extends IFormItemBase {
   /** 添加额外的按钮 */
   extraBtns?: TinyImageUploaderExtraButton[]
 }
-interface IFormTree extends IFormItemBase {
+export interface IFormTree extends IFormItemBase {
   type: 'tree'
   options: NormalOption[]
   // check?: (data:NormalOption, checkOptions:{
@@ -777,7 +839,7 @@ interface IFormTree extends IFormItemBase {
 
   nodeClick?: (data: NormalOption, node: any, component: any) => any
 }
-interface IFormList extends IFormItemBase {
+export interface IFormList extends IFormItemBase {
   type: 'list'
   data: any[]
   loading?: boolean | ((row: any, val: any) => boolean)
@@ -808,7 +870,7 @@ interface IFormList extends IFormItemBase {
   nodeClick?: (node?: any, row?: any) => any
   nodeDBClick?: (node?: any, row: any) => any
 }
-interface IAttrTable {
+export interface IAttrTable {
   attributes?: {
     label: string
     value: any
@@ -817,11 +879,11 @@ interface IAttrTable {
   data?: any
   columns?: IAttrTableRow[][]
 }
-interface IFormAttrTable extends IFormItemBase {
+export interface IFormAttrTable extends IFormItemBase {
   type: 'attr-table'
   config: IAttrTable
 }
-interface IFormVChart extends IFormItemBase {
+export interface IFormVChart extends IFormItemBase {
   type: 'vchart'
   option: any
   handleHighlight?: (...args: any[]) => any
@@ -829,9 +891,14 @@ interface IFormVChart extends IFormItemBase {
   handleZRClick?: (...args: any[]) => any
 }
 type ColorAttrType = 'hex' | 'hex8' | 'hsl' | 'hsv' | 'rgba' | ''
-interface IFormColorPicker extends IFormItemBase {
+export interface IFormColorPicker extends IFormItemBase {
   type: 'color-picker'
   colorType?: ColorAttrType
+}
+interface IFormTag extends IFormItemBase {
+  type: 'tag'
+  round?: boolean
+  color?: string | ((row?: any, val?: any) => string)
 }
 /**
  * 传入一个组件
@@ -841,11 +908,11 @@ interface IFormColorPicker extends IFormItemBase {
  * event:
  * 1、 change: 绑定值变动时触发的回调，参数为绑定值
  */
-interface IComponent extends IFormItemBase {
+export interface IComponent extends IFormItemBase {
   type: 'component'
   component: any
 }
-interface IRangeInput extends IFormItemBase {
+export interface IRangeInput extends IFormItemBase {
   type: 'range'
   /** 范围类型： select: 下拉框，input: 输入框， year: 年份选择 */
   rangeType?: 'select' | 'input' | 'year' | ''
@@ -860,7 +927,7 @@ interface IRangeInput extends IFormItemBase {
   /** 动态控制选项是否可选 rangeType值为select时可用 */
   endOptionDisabled?: (option: NormalOption, start: any) => boolean
 }
-type IFormItem =
+export type IFormItem =
   | IFormSelect
   | IFormInput
   | IFormText
@@ -900,9 +967,10 @@ type IFormItem =
   | IComponent
   | IRangeInput
   | IFormColorPicker
+  | IFormTag
 
 /** fieldset */
-interface IFormFieldset {
+export interface IFormFieldset {
   width?: string | number
   type?: 'simple' | 'default' | 'underline'
   /**
@@ -926,7 +994,7 @@ interface IFormFieldset {
 /**
  * 一个表单字段组
  */
-interface IFormFieldGroup {
+ export interface IFormFieldGroup {
   /**
    * 标识字段组
    */
@@ -962,7 +1030,7 @@ interface IFormFieldGroup {
   }
   styles?: Record<string, any> | string
 }
-interface IFormConfig {
+export interface IFormConfig {
   /**
    * 是否表单结构不会变更，设置此项可以适当提高性能
    */
@@ -988,7 +1056,7 @@ interface IFormConfig {
   /** 只是标记当前是否处理提交状态，可用此状态来处理按钮状态 */
   submitting?: boolean
 }
-interface IDialogFormConfig extends IFormConfig {
+export interface IDialogFormConfig extends IFormConfig {
   /** 弹窗标题 */
   title?: string
   /** 弹窗宽度 60% */
@@ -1020,7 +1088,7 @@ interface IDialogFormConfig extends IFormConfig {
   // 打印配置
   printConfigure?: any
 }
-interface ISearch {
+export interface ISearch {
   size?: ISize
   filters?: IFormItem[]
   moreFilters?: IFormItem[]
@@ -1035,7 +1103,7 @@ interface ISearch {
   static?: boolean
 }
 
-interface IFormWangEditor extends IFormItemBase {
+export interface IFormWangEditor extends IFormItemBase {
   type: 'wangeditor'
   // 图片上传地址
   url?: string
@@ -1043,14 +1111,14 @@ interface IFormWangEditor extends IFormItemBase {
   mode?: 'default' | 'simple'
 }
 
-interface IFormAnnex extends IFormItemBase {
+export interface IFormAnnex extends IFormItemBase {
   type: 'hint'
   // 显示内容
   text: string
 }
 
 // 表单分割线
-interface IFdivider extends IFormItemBase {
+export interface IFdivider extends IFormItemBase {
   type: 'divider'
   // 文本
   text: string

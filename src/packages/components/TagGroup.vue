@@ -55,6 +55,7 @@
 </template>
 
 <script lang="ts" setup>
+import { ISize, ITagGroup, NormalOption } from '@/types';
 import { reactive, watch } from 'vue'
 import Button from './Button.vue'
 

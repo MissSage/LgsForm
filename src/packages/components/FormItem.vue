@@ -8,30 +8,26 @@
     }}
     {{ config.unit ? config.unit : '' }}
   </label>
-
-  <el-input
-    v-else-if="config.type === 'input'"
-    v-show="!config.hidden"
-    v-model="state.value"
-    :size="computedSize"
-    style="width: 100%"
-    :maxlength="config.maxlength || ''"
-    :minlength="config.minlength || ''"
-    :class="{ 'no-border': config.noBorder }"
-    :clearable="config.clearable !== false"
-    :placeholder="config.placeholder || '请输入'"
-    :disabled="
-      typeof config.readonly === 'function'
-        ? config.readonly(state.value, row, config)
-        : config.readonly
+  <Input
+    v-else-if="
+      config.type === 'input' ||
+        config.type === 'password' ||
+        config.type === 'textarea'
     "
+    v-model="state.value"
+    :config="config"
+    :size="computedSize"
+    @blur="e => $emit('blur', state.value, e)"
     @change="handleChange"
+    @focus="e => $emit('focus', state.value, e)"
+    @clear="() => $emit('clear', state.value)"
   >
     <template
       v-if="config.suffix"
       #suffix
     >
-      <span>{{ config.suffix }}</span>
+      <span v-if="config.unit">{{ config.unit }}</span>
+      <span v-else>{{ config.suffix }}</span>
     </template>
     <template
       v-if="config.prefix"
@@ -43,21 +39,71 @@
       v-if="config.prepend"
       #prepend
     >
-      <span>{{ config.prepend }}</span>
+      <span v-if="typeof config.prepend === 'string'">{{
+        config.prepend
+      }}</span>
+      <template v-else>
+        <el-select
+          v-model="state.prependVal"
+          :placeholder="config.prepend?.placeholder || '请选择'"
+          :style="
+            typeof config.prepend?.style === 'function'
+              ? config.prepend.style(state.prependVal, row, config)
+              : config.prepend?.style
+          "
+          @change="val => onChange(config.prepend, val, config)"
+        >
+          <el-option
+            v-for="(obj, i) in config.prepend?.options"
+            :key="i"
+            :label="obj.label"
+            :value="obj.value"
+          />
+        </el-select>
+      </template>
     </template>
     <template
-      v-if="config.append || config.btn"
+      v-if="config.append || config.btn || config.appendBtns?.length"
       #append
     >
+      <span v-if="typeof config.append === 'string'">{{ config.append }}</span>
       <Button
-        v-if="config.btn"
+        v-else-if="config.btn"
         :config="config.btn"
         :row="row"
         :size="computedSize"
       ></Button>
-      <span v-if="config.append">{{ config.append }}</span>
+      <template v-else-if="config.appendBtns?.length">
+        <Button
+          v-for="(btn, i) in config.appendBtns"
+          :key="i"
+          :config="btn"
+          :row="row"
+          :size="computedSize"
+        ></Button>
+      </template>
+
+      <template v-else>
+        <el-select
+          v-model="state.appendVal"
+          :placeholder="config.append?.placeholder || '请选择'"
+          :style="
+            typeof config.append?.style === 'function'
+              ? config.append.style(state.appendVal, row, config)
+              : config.append?.style
+          "
+          @change="val => onChange(config.append, val, config)"
+        >
+          <el-option
+            v-for="(obj, i) in config.append?.options"
+            :key="i"
+            :label="obj.label"
+            :value="obj.value"
+          />
+        </el-select>
+      </template>
     </template>
-  </el-input>
+  </Input>
   <el-input
     v-if="config.type === 'input-number'"
     v-model="state.value"
@@ -139,45 +185,6 @@
       </template>
     </template>
   </el-input>
-  <el-input
-    v-else-if="config.type === 'password'"
-    v-show="!config.hidden"
-    v-model="state.value"
-    type="password"
-    style="width: 100%"
-    :class="{ 'no-border': config.noBorder }"
-    :size="computedSize"
-    :clearable="config.clearable !== false"
-    :disabled="
-      typeof config.readonly === 'function'
-        ? config.readonly(state.value, row, config)
-        : config.readonly
-    "
-    :placeholder="config.placeholder || '请输入'"
-    @change="handleChange"
-  />
-  <el-input
-    v-else-if="config.type === 'textarea'"
-    v-show="!config.hidden"
-    :ref="config.field"
-    v-model="state.value"
-    :size="computedSize"
-    type="textarea"
-    style="width: 100%"
-    :class="{ 'no-border': config.noBorder }"
-    :clearable="config.clearable !== false"
-    :disabled="
-      typeof config.readonly === 'function'
-        ? config.readonly(state.value, row, config)
-        : config.readonly
-    "
-    :autosize="{
-      minRows: config.minRow || 2,
-      maxRows: config.maxRow || 10
-    }"
-    :placeholder="config.placeholder || '请输入'"
-    @change="handleChange"
-  />
   <el-input-number
     v-else-if="config.type === 'number'"
     v-show="!config.hidden"
@@ -706,6 +713,18 @@
     "
     @change="config.onChange"
   />
+  <Tag
+    v-else-if="config.type === 'tag'"
+    :color="config.color"
+    :round="config.round"
+    :value="state.value"
+    :row="row"
+  >
+    {{
+      (config.formatter && config.formatter(state.value, row, config)) ||
+        state.value
+    }}
+  </Tag>
   <div
     v-else-if="config.type === 'component'"
     :style="
@@ -757,6 +776,8 @@ import List from './List.vue'
 import TiniImageUploader from './TiniImageUploader.vue'
 import FormTree from './FormTree.vue'
 import Tabs from './Tabs.vue'
+import { IFormDate, IFormDateRange, IFormItem, ISize } from '@/types'
+import Input from './Input.vue'
 // import IconSelector from './IconSelector.vue'
 const props = defineProps<{
   modelValue?: string | number | Array<any> | Record<string, any> | boolean

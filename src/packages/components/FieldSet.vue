@@ -38,6 +38,7 @@
   </div>
 </template>
 <script lang="ts" setup>
+import { IFormItem } from '@/types';
 import { reactive } from 'vue'
 import FormItem from './FormItem.vue'
 

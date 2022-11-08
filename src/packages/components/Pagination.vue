@@ -17,6 +17,7 @@
 <script lang="ts" setup>
 import { reactive } from 'vue'
 import { ElPagination } from 'element-plus'
+import { IPagination } from '@/types';
 
 const props = defineProps<{
   config: IPagination
