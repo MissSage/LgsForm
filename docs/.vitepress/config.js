@@ -9,5 +9,12 @@ export default defineConfig({
 
     }
   },
-  lastUpdated: true
+  lastUpdated: true,
+  themeConfig: {
+    siteTitle: 'lgsform111',
+    nav: [
+      {text: '文档',link: '/guide/'},
+      {text: 'Github',link: 'https://github.com/ligoushi/LgsForm'}
+    ]
+  }
 })
