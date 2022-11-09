@@ -34,10 +34,9 @@
     "dev": "vite",
     "build": "vue-tsc --noEmit && vite build",
     "preview": "vite preview",
-    "docs": "yarn run register:components && vitepress dev docs",
-    "docs:build": "yarn run register:components && vitepress build docs",
-    "docs:serve": "vitepress serve docs",
-    "register:components": "vitepress-rc --docsDir docs --componentsDir src/examples"
+    "docs": "vitepress dev docs",
+    "docs:build": "vitepress build docs",
+    "docs:serve": "vitepress serve docs"
   },
   "dependencies": {
     "@ckpack/vue-color": "^1.2.4",
