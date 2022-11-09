@@ -534,13 +534,6 @@ export interface ITable {
   border?: boolean
   dataList: any[]
   /**
-   * 表格标题
-   * @deprecated 存在未修复的bug,当设置表格标题时，会导致表格包裹高度和表格高度不一致的问题，通过subColumns来配置多级表头效果或许会更好,具体参见columns.subColumns的使用
-   *
-   * element多级表头文档 https://element-plus.gitee.io/zh-CN/component/table.html#多级表头
-   */
-  tableTitle?: string
-  /**
    * 表格列配置
    */
   columns: IFormTableColumn[]

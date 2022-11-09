@@ -52,14 +52,6 @@
       class="table-container"
       :class="heightClass"
     >
-      <slot name="prefix">
-        <div
-          v-if="config.tableTitle"
-          class="table-title"
-        >
-          <span class="title">{{ config.tableTitle }}</span>
-        </div>
-      </slot>
       <el-table
         ref="refElTable"
         v-loading="config.loading"
@@ -272,7 +264,6 @@
           </template>
         </el-table-column>
       </el-table>
-      <slot name="suffix"></slot>
     </div>
     <Pagination
       class="Pagination"
