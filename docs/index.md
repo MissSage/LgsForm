@@ -6,7 +6,7 @@ hero:
   text: ''
   tagline: MissSage的个人博客
   image:
-    src: /assets/pan.png
+    src: /pan.png
     alt: MissSage
   actions:
     - theme: brand

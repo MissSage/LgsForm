@@ -11,7 +11,7 @@ export default defineConfig({
   },
   themeConfig: {
     siteTitle: "MissSage",
-    logo: '/assets/Cat.svg',
+    logo: '/Cat.svg',
     nav: [
       { text: "istar组件库", link: "/istar/" },
       {
