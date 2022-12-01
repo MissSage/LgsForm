@@ -57,7 +57,7 @@ import FormItem from './FormItem.vue'
 
 const props = defineProps<{
   filters: __lgsform.IFormItem[]
-  size?: ISize
+  size?: __lgsform.ISize
   labelWidth?: string | number
   defaultParams: Record<string, any>
 }>()
