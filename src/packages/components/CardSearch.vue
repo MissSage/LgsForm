@@ -7,12 +7,11 @@
   </SLCard>
 </template>
 <script lang="ts" setup>
-import { ISearch } from '../../../global';
 import { computed, ref } from 'vue'
 import Search from './Search.vue'
 import SLCard from './SLCard.vue'
 
-defineProps<{ config: ISearch }>()
+defineProps<{ config: __lgsform.ISearch }>()
 const refSearch = ref<InstanceType<typeof Search>>()
 const toggleMore = () => {
   refSearch.value?.toggleMore()

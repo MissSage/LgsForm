@@ -55,15 +55,14 @@
 </template>
 
 <script lang="ts" setup>
-import { ISize, ITagGroup, NormalOption } from '../../../global';
 import { reactive, watch } from 'vue'
 import Button from './Button.vue'
 
 const props = withDefaults(
   defineProps<{
-    config: ITagGroup
+    config: __lgsform.ITagGroup
     modelValue?: string | number
-    size: ISize
+    size: __lgsform.ISize
     theme: 'dark' | 'darkblue'
   }>(),
   {
@@ -90,7 +89,7 @@ const state = reactive<{
     props.theme === 'dark' || props.theme === 'darkblue' ? '#373858' : '#dcdfe6'
 })
 const emit = defineEmits(['change', 'update:model-value'])
-const handleClick = (item: NormalOption) => {
+const handleClick = (item: __lgsform.NormalOption) => {
   const isCancel = props.config?.cancelable && item.value === props.modelValue
 
   emit('update:model-value', isCancel ? undefined : item.value)

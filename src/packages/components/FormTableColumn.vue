@@ -200,11 +200,10 @@ import { computed } from 'vue'
 import { resolveElImageData } from '@/utils/GlobalHelper'
 import Voicer from './Voicer.vue'
 import Tag from './Tag.vue'
-import { IFormTableColumn } from '../../../global'
 
 const emit = defineEmits(['update:modelValue', 'change'])
 const props = defineProps<{
-  config: IFormTableColumn
+  config: __lgsform.IFormTableColumn
   /** 表头绑定的数据对象 */
   row?: Record<string, any>
   modelValue?: any

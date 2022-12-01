@@ -29,12 +29,11 @@ import { VideoPlay, VideoPause } from '@element-plus/icons'
 import { ElIcon } from 'element-plus'
 import { ref, reactive } from 'vue'
 import { downloadUrl } from '@/utils/fileHelper'
-import { ISize } from '../../../global';
 
 const refAudio = ref<HTMLAudioElement>()
 defineProps<{
   url?: string
-  size?: ISize
+  size?: __lgsform.ISize
   showUrl?: boolean
   download?: boolean
 }>()

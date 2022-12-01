@@ -181,14 +181,13 @@
   </div>
 </template>
 <script lang="ts" setup>
-import { IRangeInput } from '../../../global';
 import { ElSelect, ElOption, ElDatePicker, ElInput } from 'element-plus'
 import { ref } from 'vue'
 
 const emit = defineEmits(['update:modelValue', 'change'])
 const props = defineProps<{
   row?: any
-  config: IRangeInput
+  config: __lgsform.IRangeInput
   modelValue?: number[]
 }>()
 const start = ref<string | number | undefined>(

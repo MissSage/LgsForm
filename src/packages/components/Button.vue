@@ -59,14 +59,13 @@
   </el-button>
 </template>
 <script lang="ts" setup>
-import { IButton, ISize } from '../../../global';
 import { ElButton, ElIcon } from 'element-plus'
 import { computed } from 'vue'
 
 const props = defineProps<{
   row?: any
-  config: IButton
-  size?: ISize
+  config: __lgsform.IButton
+  size?: __lgsform.ISize
 }>()
 const type = computed(() => {
   return resolveType()

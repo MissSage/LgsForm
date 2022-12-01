@@ -732,14 +732,13 @@ import TiniImageUploader from "./TiniImageUploader.vue";
 import FormTree from "./FormTree.vue";
 import Tabs from "./Tabs.vue";
 import Tag from "./Tag.vue";
-import { IFormDate, IFormDateRange, IFormItem, ISize } from "../../../global";
 import Input from "./Input.vue";
 // import IconSelector from './IconSelector.vue'
 const props = defineProps<{
   modelValue?: string | number | Array<any> | Record<string, any> | boolean;
   row?: Record<string, any>;
-  size?: ISize;
-  config: IFormItem;
+  size?: __lgsform.ISize;
+  config: __lgsform.IFormItem;
   width?: string;
 }>();
 const emit = defineEmits(["update:model-value", "change"]);
@@ -788,7 +787,7 @@ watch(
   { immediate: true }
 );
 const getDateOptions = (date: any) => {
-  const item = props.config as IFormDate | IFormDateRange;
+  const item = props.config as __lgsform.IFormDate | __lgsform.IFormDateRange;
   // 2021.07.17设置时间可选范围
   if ((!item.min && !item.max) || !date) {
     return false;

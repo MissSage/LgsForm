@@ -10,11 +10,10 @@
 </template>
 
 <script lang="ts" setup>
-import { IButton } from '../../../global';
 import { ElUpload, ElButton } from 'element-plus'
 
 const props = defineProps<{
-  config: IButton
+  config: __lgsform.IButton
 }>()
 
 const UploadFile = async (res: any) => {

@@ -45,15 +45,14 @@
   </div>
 </template>
 <script lang="ts" setup>
-import { ISize, ITabs } from '../../../global';
 import { ElTabs, ElTabPane } from 'element-plus'
 import { reactive, watch } from 'vue'
 import Button from './Button.vue'
 
 const props = defineProps<{
   modelValue?: string | number
-  config?: ITabs
-  size?: ISize
+  config?: __lgsform.ITabs
+  size?: __lgsform.ISize
   row?: Record<string, any>
 }>()
 const emit = defineEmits(['change', 'update:model-value'])

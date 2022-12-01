@@ -30,7 +30,6 @@
 </template>
 
 <script lang="ts" setup name="ColorPicker">
-import { ColorAttrType, ISize } from '../../../global';
 import { Chrome } from '@ckpack/vue-color'
 import { ElPopover } from 'element-plus'
 import { ref, reactive, watch } from 'vue'
@@ -38,9 +37,9 @@ import { ref, reactive, watch } from 'vue'
 const refPicker = ref<InstanceType<typeof Chrome>>()
 const props = defineProps<{
   modelValue?: string
-  size?: ISize
+  size?: __lgsform.ISize
   disabled?: boolean
-  colorType?: ColorAttrType
+  colorType?: __lgsform.ColorAttrType
   theme?: 'dark'|'darkblue'
 }>()
 const emit = defineEmits(['update:modelValue', 'change'])

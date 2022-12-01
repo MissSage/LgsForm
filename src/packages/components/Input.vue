@@ -68,15 +68,15 @@
     </template>
   </el-input>
 </template>
-<script lang="ts" setup>import { IFormInput, ISize } from '../../../global';
+<script lang="ts" setup>
 import { ElInput } from 'element-plus';
 import { reactive, computed, watch } from 'vue';
 
 defineEmits(['change', 'blur', 'focus', 'clear'])
 const props = defineProps<{
   modelValue?: any
-  config: IFormInput
-  size?: ISize
+  config: __lgsform.IFormInput
+  size?: __lgsform.ISize
   row?: any
 }>()
 const state = reactive<{

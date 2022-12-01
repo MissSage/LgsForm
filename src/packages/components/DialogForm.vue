@@ -61,14 +61,13 @@
 </template>
 
 <script lang="ts" setup>
-import { IDialogFormConfig } from '../../../global';
 import { ElDialog, ElButton } from 'element-plus'
 import { reactive, ref, watch } from 'vue'
 import Button from './Button.vue'
 import Form from './Form.vue'
 
 const props = defineProps<{
-  config: IDialogFormConfig
+  config: __lgsform.IDialogFormConfig
 }>()
 const emit = defineEmits(['close'])
 const refForm = ref<InstanceType<typeof Form>>()

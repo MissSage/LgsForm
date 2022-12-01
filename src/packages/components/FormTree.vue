@@ -22,16 +22,15 @@
   </div>
 </template>
 <script lang="ts" setup>
-import { IFormTree, ISize } from '../../../global';
 import { ElTree } from 'element-plus'
 import { onMounted, reactive, ref, watch } from 'vue'
 
 const emit = defineEmits(['change', 'update:model-value'])
 const props = defineProps<{
   modelValue?: string[]
-  config: IFormTree
+  config: __lgsform.IFormTree
   row?: any
-  size?: ISize
+  size?: __lgsform.ISize
 }>()
 const refTree = ref<InstanceType<typeof ElTree>>()
 const state = reactive<{

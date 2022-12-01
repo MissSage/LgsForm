@@ -77,12 +77,11 @@ import { reactive, toRefs, onMounted, watch, ref } from 'vue'
 import { ElForm } from 'element-plus'
 import SearchMore from './SearchMore.vue'
 import FormItem from './FormItem.vue'
-import { IFormItem, ISearch, MoreFilterConditions } from '../../../global';
 
 const refForm = ref<InstanceType<typeof ElForm>>()
 const refSearchMore = ref<InstanceType<typeof SearchMore>>()
 const props = defineProps<{
-  config: ISearch
+  config: __lgsform.ISearch
 }>()
 
 // 初始化参数
@@ -103,14 +102,14 @@ const state = reactive<{
     ...(props.config.defaultParams || {})
   }
 })
-const moreFilterConditions = ref<MoreFilterConditions[]>([])
+const moreFilterConditions = ref<__lgsform.MoreFilterConditions[]>([])
 // 接收AddtionalFilters附加参数
 const addtionalSubmit = (params: Record<string, any>) => {
   Object.assign(state.queryParams, params)
   formateQueryParamsToString(params)
   props.config.handleSearch && props.config.handleSearch(state.queryParams)
 }
-const handleFormItemChange = (val: any, item: IFormItem) => {
+const handleFormItemChange = (val: any, item: __lgsform.IFormItem) => {
   item.onChange && item.onChange(val, item)
 }
 watch(

@@ -155,10 +155,9 @@ import Button from './Button.vue'
 import FieldSet from './FieldSet.vue'
 import FormItem from './FormItem.vue'
 import FormTable from './FormTable.vue'
-import { IFormConfig, IFormFieldGroup, IFormItem } from '../../../global'
 
 const props = defineProps<{
-  config: IFormConfig
+  config: __lgsform.IFormConfig
 }>()
 const refForm = ref<InstanceType<typeof ElForm>>()
 const state = reactive<{
@@ -178,8 +177,8 @@ const state = reactive<{
 })
 const handleFormItemChange = (
   val: any,
-  item: IFormItem,
-  fieldSet?: IFormFieldGroup
+  item: __lgsform.IFormItem,
+  fieldSet?: __lgsform.IFormFieldGroup
 ) => {
   item.onChange && item.onChange(val, item, fieldSet)
 }
