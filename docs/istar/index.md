@@ -5,3 +5,5 @@
 ```md
 yarn add lgsform
 ```
+
+[快速开始](./Form.md)

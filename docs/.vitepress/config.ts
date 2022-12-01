@@ -1,6 +1,6 @@
 import { defineConfig } from "vitepress"
 export default defineConfig({
-  title: "ligoushi",
+  title: "MissSage",
   description: "Just Playing Around",
   base: "/",
   markdown: {
@@ -10,8 +10,8 @@ export default defineConfig({
     lineNumbers: false
   },
   themeConfig: {
-    siteTitle: "lee",
-    // logo: '/',
+    siteTitle: "MissSage",
+    logo: '/assets/Cat.svg',
     nav: [
       { text: "istar组件库", link: "/istar/" },
       {
