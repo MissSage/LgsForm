@@ -21,7 +21,7 @@ export default defineConfig({
             items: [
               {
                 text: "Animation",
-                link: "https://MissSage.github.io"
+                link: "https://MissSage.github.io/animations"
               }
             ]
           }
