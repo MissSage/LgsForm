@@ -7,6 +7,7 @@ import { reactive, ref } from "vue";
 // import Form from '../packages/es/Form'
 import FormTable from "../packages/components/FormTable.vue";
 import Form from "../packages/components/Form.vue";
+
 const FormConfig = reactive<__lgsform.IFormConfig>({
   group: [
     {

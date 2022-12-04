@@ -11,7 +11,7 @@ hero:
   actions:
     - theme: brand
       text: Get Start
-      link: /guide/
+      link: /istar/quickstart
     - theme: alt
       text: istar
       link: /istar/

@@ -1,3 +1,5 @@
+import { Plugin } from 'vue';
+
 type SFCWithInstall<T> = T & { install?:(app: App)=> void };
 export declare const AttrTable: SFCWithInstall<typeof import('../packages/components/AttrTable.vue')['default']>
 export declare const AttrTableCellContent: SFCWithInstall<typeof import('../packages/components/AttrTableCellContent.vue')['default']>
@@ -28,3 +30,5 @@ export declare const TagGroup: SFCWithInstall<typeof import('../packages/compone
 export declare const TiniImageUploader: SFCWithInstall<typeof import('../packages/components/TiniImageUploader.vue')['default']>
 export declare const Videor: SFCWithInstall<typeof import('../packages/components/Videor.vue')['default']>
 export declare const Voicer: SFCWithInstall<typeof import('../packages/components/Voicer.vue')['default']>
+declare const LgsForm: Plugin
+export default LgsForm

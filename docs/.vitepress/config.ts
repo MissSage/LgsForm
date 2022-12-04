@@ -13,7 +13,15 @@ export default defineConfig({
     siteTitle: "MissSage",
     logo: '/Cat.svg',
     nav: [
-      { text: "istar组件库", link: "/istar/" },
+      {
+        text: "组件库", items: [
+          {
+            items: [
+              { text: 'istar', link: '/istar/' }
+            ]
+          }
+        ]
+      },
       {
         text: "相关链接",
         items: [
@@ -44,6 +52,15 @@ export default defineConfig({
     ],
     sidebar: {
       "/istar/": [
+        {
+          text: '指南',
+          items: [
+            {
+              text: '快速开始',
+              link: '/istar/quickstart'
+            }
+          ]
+        },
         {
           text: "istar组件库",
           collapsible: true,
