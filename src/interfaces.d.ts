@@ -1191,5 +1191,33 @@ declare namespace __lgsform {
     // 文本位置
     contentPosition?: 'left' | 'center' | 'right'
   }
-
+  // export const AttrTable: SFCWithInstall<typeof import('./packages/components/AttrTable.vue')['default']>
+  // export const AttrTableCellContent: SFCWithInstall<typeof import('./packages/components/AttrTableCellContent.vue')['default']>
+  // export const AvatarUploader: SFCWithInstall<typeof import('./packages/components/AvatarUploader.vue')['default']>
+  // export const Button: SFCWithInstall<typeof import('./packages/components/Button.vue')['default']>
+  // export const CardSearch: SFCWithInstall<typeof import('./packages/components/CardSearch.vue')['default']>
+  // export const CardTable: SFCWithInstall<typeof import('./packages/components/CardTable.vue')['default']>
+  // export const ColorPicker: SFCWithInstall<typeof import('./packages/components/ColorPicker.vue')['default']>
+  // export const DialogForm: SFCWithInstall<typeof import('./packages/components/DialogForm.vue')['default']>
+  // export const FieldSet: SFCWithInstall<typeof import('./packages/components/FieldSet.vue')['default']>
+  // export const Form: SFCWithInstall<typeof import('./packages/components/Form.vue')['default']>
+  // export const FormItem: SFCWithInstall<typeof import('./packages/components/FormItem.vue')['default']>
+  // export const FormTable: SFCWithInstall<typeof import('./packages/components/FormTable.vue')['default']>
+  // export const FormTableColumn: SFCWithInstall<typeof import('./packages/components/FormTableColumn.vue')['default']>
+  // export const FormTree: SFCWithInstall<typeof import('./packages/components/FormTree.vue')['default']>
+  // export const FormWangeditor: SFCWithInstall<typeof import('./packages/components/FormWangeditor.vue')['default']>
+  // export const ImgViewer: SFCWithInstall<typeof import('./packages/components/ImgViewer.vue')['default']>
+  // export const ImportButton: SFCWithInstall<typeof import('./packages/components/ImportButton.vue')['default']>
+  // export const InlineForm: SFCWithInstall<typeof import('./packages/components/InlineForm.vue')['default']>
+  // export const List: SFCWithInstall<typeof import('./packages/components/List.vue')['default']>
+  // export const Pagination: SFCWithInstall<typeof import('./packages/components/Pagination.vue')['default']>
+  // export const RangeSelecter: SFCWithInstall<typeof import('./packages/components/RangeSelecter.vue')['default']>
+  // export const Search: SFCWithInstall<typeof import('./packages/components/Search.vue')['default']>
+  // export const SearchMore: SFCWithInstall<typeof import('./packages/components/SearchMore.vue')['default']>
+  // export const Tabs: SFCWithInstall<typeof import('./packages/components/Tabs.vue')['default']>
+  // export const Tag: SFCWithInstall<typeof import('./packages/components/Tag.vue')['default']>
+  // export const TagGroup: SFCWithInstall<typeof import('./packages/components/TagGroup.vue')['default']>
+  // export const TiniImageUploader: SFCWithInstall<typeof import('./packages/components/TiniImageUploader.vue')['default']>
+  // export const Videor: SFCWithInstall<typeof import('./packages/components/Videor.vue')['default']>
+  // export const Voicer: SFCWithInstall<typeof import('./packages/components/Voicer.vue')['default']>
 }
