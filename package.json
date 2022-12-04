@@ -25,7 +25,6 @@
       "require": "./dist/style.css"
     }
   },
-  "typings": "global.d.ts",
   "author": {
     "name": "ligoushi",
     "email": "184078718@qq.com"

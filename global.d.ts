@@ -1,10 +1,14 @@
-// export * from './src/types/lgsform'
-// export * from './src/types/interfaces'
-
 declare namespace __lgsform {
-  export type SFCWithInstall<T> = T & { install?:(app: App)=> void };
-  export type IButtonType = "default" | "success" | "warning" | "info" | "primary" | "danger" | "text"
-  export type ISize = "small" | "large" | "default" | ""
+  import a from 'element-plus'
+  export type IButtonType =
+    | 'default'
+    | 'success'
+    | 'warning'
+    | 'info'
+    | 'primary'
+    | 'danger'
+    | 'text'
+  export type ISize = 'small' | 'large' | 'default' | ''
   export type NormalOption = {
     id?: string
     label: string
@@ -20,12 +24,6 @@ declare namespace __lgsform {
     isLeaf?: boolean
     /** 单位 表单中值第一个参数为值，第二个参数为表单数据，第三个值为当前表单元素的配置 */
     unit?: string | ((val: any, row: any, config: any) => any)
-  }
-  export type MoreFilterConditions = {
-    label?: string
-    value?: any
-    filter?: IFormItem
-    formatter?: (val: any, row?: any, filter?: IFormItem) => any
   }
   export type IButton = {
     type?: IButtonType | ((row?: any) => IButtonType)
@@ -63,9 +61,10 @@ declare namespace __lgsform {
   }
 
   export interface IFormItemBase {
+    popperClass?: 'dark' | 'light' | 'darkblue'
     refId?: string
     id?: string
-    type: string
+    type?: string
     field?: string
     label?: string
     hidden?: boolean
@@ -77,14 +76,16 @@ declare namespace __lgsform {
      *
      */
     handleHidden?: (params: any, query: any, formItem: IFormItem) => void
-    style?: Record<string, any> | ((value: any, row: any, formItem: IFormItem) => Record<string, any>)
-    placeholder?: string
+    style?:
+    | Record<string, any>
+    | ((value: any, row: any, formItem: IFormItem) => Record<string, any>)
+    placeholder?: string | ((value: any, row: any, formItem: IFormItem) => string)
     readonly?: boolean | ((value: any, row: any, formItem: IFormItem) => boolean)
-    rules?: IFormItemRule
+    rules?: any
     aInfo?: boolean
     size?: ISize
     clearable?: boolean
-    labelWidth?: string | number | "auto"
+    labelWidth?: string | number | 'auto'
     /**
      * 单位, 当设置此项时，会附加在表单元素的尾端
      */
@@ -93,11 +94,16 @@ declare namespace __lgsform {
     /**
      * 输入框尾部内容，只对非 type="textarea" 有效
      */
-    suffix?: string
-    /**
+     suffix?:
+     | string
+     | ((option: NormalOption, val: any, row: any, config: IFormRadio) => string)
+     /**
      * 输入框头部内容，只对非 type="textarea" 有效
      */
-    prefix?: string
+     prefix?:
+     | string
+     | ((option: NormalOption, val: any, row: any, config: IFormRadio) => string)
+    
     /**
      * 输入框前置内容，只对非 type="textarea" 有效
      */
@@ -126,7 +132,7 @@ declare namespace __lgsform {
     // #append 按钮
     btn?: IButton
     /**
-     * 格式化表单值
+     * 格式化表单显示值，对输入型表单项无效
      */
     formatter?: (val, row?, config?: IFormItem) => any
     /** 当值变化时的回调，这个只会在能够绑定值的item中都会生效 Only effect with bind a value */
@@ -137,8 +143,30 @@ declare namespace __lgsform {
     onBlur?: (...args: any[]) => any
   }
   export interface IFormInput extends IFormItemBase {
-    type: "input" | "password" | "textarea"
-    inputType?: "text" | "textarea" | "button" | "checkbox" | "color" | "date" | "datetime-local" | "email" | "file" | "image" | "month" | "number" | "password" | "radio" | "range" | "reset" | "search" | "submit" | "tel" | "time" | "url" | "week"
+    type: 'input' | 'password' | 'textarea'
+    inputType?:
+    | 'text'
+    | 'textarea'
+    | 'button'
+    | 'checkbox'
+    | 'color'
+    | 'date'
+    | 'datetime-local'
+    | 'email'
+    | 'file'
+    | 'image'
+    | 'month'
+    | 'number'
+    | 'password'
+    | 'radio'
+    | 'range'
+    | 'reset'
+    | 'search'
+    | 'submit'
+    | 'tel'
+    | 'time'
+    | 'url'
+    | 'week'
     /** 最大输入长度 */
     maxlength?: number | string
     /** 最小输入长度 */
@@ -169,7 +197,7 @@ declare namespace __lgsform {
     /** 设置输入字段 的合法数字间隔 */
     step?: number
     /** 控制是否能被用户缩放 */
-    resize?: "none" | "both" | "horizontal" | "vertical"
+    resize?: 'none' | 'both' | 'horizontal' | 'vertical'
     /** 自动获得焦点 */
     autofocus?: boolean
     /** 用来控制通过tab切换输入框焦点时的顺序 */
@@ -178,35 +206,36 @@ declare namespace __lgsform {
     validateEvent?: boolean
     /** input元素或textarea元素的style */
     inputStyle?: Object
-    controlPosition?: "right"
+    controlPosition?: 'right'
   }
   export interface IFormInputNumber extends IFormItemBase {
-    type: "input-number"
+    type: 'input-number'
   }
   export interface IFormText extends IFormItemBase {
-    type: "text"
+    type: 'text'
   }
   export interface IFormPassword extends IFormItemBase {
-    type: "password"
+    type: 'password'
   }
   export interface IFormTextArea extends IFormItemBase {
-    type: "textarea"
+    type: 'textarea'
     minRow?: number
     maxRow?: number
   }
   export interface IFormNumber extends IFormItemBase {
-    type: "number"
+    type: 'number'
     min?: number
     max?: number
-    controlPosition?: "right"
+    /** 数字格式的按钮位置 */
+    controlPosition?: 'right'
   }
   export interface IFormSelect extends IFormItemBase {
-    type: "select"
+    type: 'select'
     multiple?: boolean
     allowCreate?: boolean
     options?: NormalOption[]
     remote?: boolean
-    returnType?: "str" | "arr"
+    returnType?: 'str' | 'arr'
     remoteMethod?: (val: any) => NormalOption[]
     setOptionBy?: string
     setOptionMethod?: (config: any, row: any) => any
@@ -227,29 +256,39 @@ declare namespace __lgsform {
     class?: string
   }
   export interface IFormCascader extends IFormItemBase {
-    type: "cascader"
+    type: 'cascader'
     props?: ICascaderProps
     multiple?: boolean
     options?: NormalOption[]
   }
   export interface IFormCheckbox extends IFormItemBase {
-    type: "checkbox"
+    type: 'checkbox'
     options?: NormalOption[]
   }
   export interface IFormRadio extends IFormItemBase {
-    type: "radio" | "radio-button"
+    type: 'radio' | 'radio-button'
     options?: NormalOption[]
-    suffix?: string | ((option: NormalOption, val: any, row: any, config: IFormRadio) => string)
-    prefix?: string | ((option: NormalOption, val: any, row: any, config: IFormRadio) => string)
-    suffixStyle?: Record<string, any> | ((option: NormalOption, val: any, row: any, config: IFormRadio) => any)
-    prefixStyle?: Record<string, any> | ((option: NormalOption, val: any, row: any, config: IFormRadio) => any)
+    suffix?:
+    | string
+    | ((option: NormalOption, val: any, row: any, config: IFormRadio) => string)
+    prefix?:
+    | string
+    | ((option: NormalOption, val: any, row: any, config: IFormRadio) => string)
+    suffixStyle?:
+    | Record<string, any>
+    | ((option: NormalOption, val: any, row: any, config: IFormRadio) => any)
+    prefixStyle?:
+    | Record<string, any>
+    | ((option: NormalOption, val: any, row: any, config: IFormRadio) => any)
     /** 统一给元素添加样式 */
-    itemStyle?: Record<string, any> | ((val: any, row: any, config: IFormRadio) => any)
+    itemStyle?:
+    | Record<string, any>
+    | ((val: any, row: any, config: IFormRadio) => any)
     itemClick?: () => any
   }
 
   export interface IFormSwitch extends IFormItemBase {
-    type: "switch"
+    type: 'switch'
     activeText?: string
     inActiveText?: string
     activeColor?: string
@@ -261,14 +300,14 @@ declare namespace __lgsform {
     inlinePrompt?: boolean
   }
   export interface IFormDate extends IFormItemBase {
-    type: "date" | "datetime" | "month" | "year"
+    type: 'date' | 'datetime' | 'month' | 'year'
     min?: string
     max?: string
     format?: string
     textFormat?: string
   }
   export interface IFormDateRange extends IFormItemBase {
-    type: "daterange" | "datetimerange" | "monthrange" | "yearrange"
+    type: 'daterange' | 'datetimerange' | 'monthrange' | 'yearrange'
     min?: string
     max?: string
     format?: string
@@ -276,17 +315,17 @@ declare namespace __lgsform {
     rangeSeparator?: string
   }
   export interface IFormTime extends IFormItemBase {
-    type: "time"
+    type: 'time'
     min?: string
     max?: string
     format?: string
     isRange?: boolean
   }
   export interface IFormEditor extends IFormItemBase {
-    type: "editor"
+    type: 'editor'
   }
   export interface IFormUploader extends IFormItemBase {
-    type: "uploader"
+    type: 'uploader'
     desc?: string
     multiple?: boolean
     maxFile?: number
@@ -300,32 +339,32 @@ declare namespace __lgsform {
     fileClick?: (...args: any[]) => void
   }
   export interface IFormImgUploader extends IFormItemBase {
-    type: "image"
+    type: 'image'
     url?: string
     limit?: number
     multiple?: boolean
-    returnType?: "arrStr" | "comma"
+    returnType?: 'arrStr' | 'comma'
   }
   export interface IAvatarUploader extends IFormItemBase {
-    type: "avatar"
+    type: 'avatar'
     url?: string
     tips?: string
   }
   export interface IFormFileUploader extends IFormItemBase {
-    type: "file"
+    type: 'file'
     url?: string
     limit?: number
     multiple?: boolean
-    returnType?: "arrStr" | "comma"
+    returnType?: 'arrStr' | 'comma'
     tips?: string
   }
   export interface IFormAMap extends IFormItemBase {
-    type: "amap"
+    type: 'amap'
     required?: boolean
-    resultType?: "str" | "arrStr"
+    resultType?: 'str' | 'arrStr'
   }
   export interface IFormUser extends IFormItemBase {
-    type: "user"
+    type: 'user'
     height?: string
     width?: string
     /**
@@ -345,7 +384,7 @@ declare namespace __lgsform {
     }
   }
   export interface ITagGroup extends IFormItemBase {
-    type: "tags"
+    type: 'tags'
     cancelable?: boolean
     options: TagNormalOption[]
     width?: string | number
@@ -383,7 +422,9 @@ declare namespace __lgsform {
      * 表格项图标
      */
     icon?: string
-    iconStyle?: Record<string, any> | ((row, val, config: IFormTableColumn) => Record<string, any>)
+    iconStyle?:
+    | Record<string, any>
+    | ((row, val, config: IFormTableColumn) => Record<string, any>)
     symbolIcon?: any
     svgIcon?: any
     /**
@@ -393,7 +434,7 @@ declare namespace __lgsform {
     /** 是否显示为tag */
     tag?: boolean
     /** tag的颜色 */
-    tagColor?: string | ((row, val) => any)
+    tagColor?: string | ((row, val) => string)
     /** tag是否圆角 */
     tagRound?: boolean
     /**
@@ -408,7 +449,7 @@ declare namespace __lgsform {
     /**
      * 列的布局
      */
-    align?: "left" | "center" | "right"
+    align?: 'left' | 'center' | 'right'
     /**
      * 最小宽度
      */
@@ -416,7 +457,7 @@ declare namespace __lgsform {
     /**
      * 是否是固定列/固定位置
      */
-    fixed?: "right" | "left" | boolean
+    fixed?: 'right' | 'left' | boolean
     /**
      * 当配置此项时为表单元素显示，表单元素的配置
      */
@@ -424,7 +465,11 @@ declare namespace __lgsform {
     /**
      * 单元格的样式
      */
-    cellStyle?: StyleSheet | Record<string, string> | string | ((row: any, val: any, field?: string) => any)
+    cellStyle?:
+    | StyleSheet
+    | Record<string, string>
+    | string
+    | ((row: any, val: any, field?: string) => any)
     className?: string
     /**
      * 格式化文本内容
@@ -455,7 +500,7 @@ declare namespace __lgsform {
     page?: number
     limit?: number
     total?: number
-    align?: "left" | "right" // 默认在左侧
+    align?: 'left' | 'right' // 默认在左侧
     /** 操作按钮布局 默认total,sizes, prev, pager, next, jumper */
     layout?: string // 分布布局
     pageSize?: number[]
@@ -466,7 +511,7 @@ declare namespace __lgsform {
     label?: string
     width?: string
     align?: string
-    fixed?: "right"
+    fixed?: 'right'
     showRank?: boolean
   }
   export interface ITable {
@@ -492,18 +537,25 @@ declare namespace __lgsform {
     border?: boolean
     dataList: any[]
     /**
+     * 表格标题
+     * @deprecated 存在未修复的bug,当设置表格标题时，会导致表格包裹高度和表格高度不一致的问题，通过subColumns来配置多级表头效果或许会更好,具体参见columns.subColumns的使用
+     *
+     * element多级表头文档 https://element-plus.gitee.io/zh-CN/component/table.html#多级表头
+     */
+    tableTitle?: string
+    /**
      * 表格列配置
      */
     columns: IFormTableColumn[]
     indexVisible?: ITableIndex | boolean
     defaultSort?: {
-      order: "ascending" | "descending"
+      order: 'ascending' | 'descending'
       prop: string
     }
     sort?: {
       // topColors?: string[] // 暂时无用
       showBackground?: boolean
-      order?: "ascending" | "descending"
+      order?: 'ascending' | 'descending'
       prop?: string
     }
     // 树形结构
@@ -574,11 +626,12 @@ declare namespace __lgsform {
     handleRowDbClick?: (row: any) => any
   }
   export interface IFormTable extends IFormItemBase {
-    type: "table"
+    type: 'table'
     config: ITable
   }
-  export interface IFormCardTable extends IFormTable {
-    type: "card-table"
+  export interface IFormCardTable extends IFormItemBase {
+    type: 'card-table'
+    config: ITable
     /**
      * 表格标题
      */
@@ -592,7 +645,11 @@ declare namespace __lgsform {
     /**
      * 表格搜索
      */
-    handleQuery?: (queryParams: any, item?: IFormItem, group?: IFormFieldGroup) => any
+    handleQuery?: (
+      queryParams: any,
+      item?: IFormItem,
+      group?: IFormFieldGroup
+    ) => any
   }
   export interface ICardTable extends ITable {
     title?: string
@@ -604,18 +661,22 @@ declare namespace __lgsform {
     /**
      * 表格搜索
      */
-    handleQuery?: (queryParams: any, item?: IFormItem, group?: IFormFieldGroup) => any
+    handleQuery?: (
+      queryParams: any,
+      item?: IFormItem,
+      group?: IFormFieldGroup
+    ) => any
   }
   export interface IFormButtonGroup extends IFormItemBase {
-    type: "btn-group"
+    type: 'btn-group'
     btns: IButton[]
   }
   export interface ITabs extends IFormItemBase {
-    type: "tabs"
+    type: 'tabs'
     closable?: boolean
-    theme?: "darkblue" | "dark"
+    theme?: 'darkblue'
     tabs: NormalOption[]
-    tabType?: "simple" | "card" | "inset" | "border-card"
+    tabType?: 'simple' | 'card' | 'inset' | 'border-card'
     btns?: IButton[]
     handleTabClick?: (tab: any, event: Event) => any
     /**
@@ -623,25 +684,28 @@ declare namespace __lgsform {
      * @param tabName 移除的标签
      * @param nextTabName 自动选中时的标签，当不存在时，即已经没有标签时，值为undefined
      */
-    handleTabRemove?: (tabName: string | number, nextTabName?: string | number) => any
+    handleTabRemove?: (
+      tabName: string | number,
+      nextTabName?: string | number
+    ) => any
     /** 在移除标签后是否自动选中下一个 默认true */
     selectNextAfterRemove?: boolean
     // 标签的宽度是否自撑开
     stretch?: boolean
   }
   export interface IIconSelector extends IFormItemBase {
-    type: "icon-selector"
+    type: 'icon-selector'
     title?: string
-    defaultType?: "ali" | "ele" | "awe" | ""
+    defaultType?: 'ali' | 'ele' | 'awe' | ''
     clearable?: boolean
 
     onClear?: () => void
   }
   export interface IProgress extends IFormItemBase {
-    type: "progress"
+    type: 'progress'
   }
   export interface ISelectTree extends IFormItemBase {
-    type: "select-tree"
+    type: 'select-tree'
     /** 绑定数据 */
     options: NormalOption[]
     /** 指定值对应的键 */
@@ -653,7 +717,7 @@ declare namespace __lgsform {
     /** 显示多选框 默认false, 只在muLtiple开启时才生效 */
     showCheckbox?: boolean
     /** 可筛选 默认true */
-    filterable?: boolea
+    filterable?: boolean
     lazy?: boolean
     props?: ISelectTreeProps
     defaultExpandAll?: boolean
@@ -666,9 +730,6 @@ declare namespace __lgsform {
     prop?: string
     /** 值列合并列数 */
     cols?: number
-    className?: string
-    cellStyle?: Record<string, any>
-
     /**
      * 右边单位
      */
@@ -681,7 +742,9 @@ declare namespace __lgsform {
      * 表格项图标
      */
     icon?: string
-    iconStyle?: Record<string, any> | ((row, val, config?: IFormTableColumn) => Record<string, any>)
+    iconStyle?:
+    | Record<string, any>
+    | ((row, val, config?: IFormTableColumn) => Record<string, any>)
     symbolIcon?: any
     svgIcon?: any
     /**
@@ -711,7 +774,10 @@ declare namespace __lgsform {
     /**
      * 单元格的样式
      */
-    cellStyle?: Record<string, string> | string | ((row: any, val: any, field?: string) => any)
+    cellStyle?:
+    | Record<string, string>
+    | string
+    | ((row: any, val: any, field?: string) => any)
     className?: string
     handleClick?: (row: any) => any
     /** 声音播放组件 */
@@ -727,7 +793,7 @@ declare namespace __lgsform {
     click: (row?: { value?: any; config?: ITinyImageUploader }) => void
   }
   export interface ITinyImageUploader extends IFormItemBase {
-    type: "image-tiny"
+    type: 'image-tiny'
     url?: string
     /**
      * 默认上传按钮的文字
@@ -737,8 +803,15 @@ declare namespace __lgsform {
     extraBtns?: TinyImageUploaderExtraButton[]
   }
   export interface IFormTree extends IFormItemBase {
-    type: "tree"
+    type: 'tree'
     options: NormalOption[]
+    /** 自定义的节点组件，接收node和data两个属性 */
+    customNode?: any
+    /** 自定义的节点组件的额外props */
+    customProps?: Record<string, any>
+    /** 点击节点时选中, 默认true */
+    checkOnClickNode?: boolean
+    highlightCurrent?: boolean
     // check?: (data:NormalOption, checkOptions:{
     //   checkedNodes:any[]
     //   checkedKeys:any[]
@@ -752,7 +825,11 @@ declare namespace __lgsform {
      * @param isChecked 节点本身是否被选中
      * @param hasChildChecked 节点的子树中是否有被选中的节点
      */
-    handleCheckChange?: (data: NormalOption, isChecked: boolean, hasChildChecked: boolean) => any
+    handleCheckChange?: (
+      data: NormalOption,
+      isChecked: boolean,
+      hasChildChecked: boolean
+    ) => any
     /** 选择任意级别 默认false */
     checkStrictly?: boolean
     loading?: boolean | ((row: any, val: any) => boolean)
@@ -762,6 +839,8 @@ declare namespace __lgsform {
     showCheckbox?: boolean
     /** 可筛选 默认true */
     filterable?: boolean
+    /** 通过监听指定字段值变化来过滤树 */
+    filterBy?: string
     props?: ISelectTree
     /**
      * 当值对应的字段不为id时，需要指定此项，不然拿不到值
@@ -769,9 +848,29 @@ declare namespace __lgsform {
     nodeKey?: string
 
     nodeClick?: (data: NormalOption, node: any, component: any) => any
+    /** 是否在点击节点的时候展开或者收缩节点， 默认值为 true，如果为 false，则只有点箭头图标的时候才会展开或者收缩节点。 */
+    expandOnClickNode?: boolean
+    handleCheck?: (
+      data: NormalOption,
+      params: {
+        checkedNodes: any[]
+        checkedKeys: any[]
+        halfCheckedNodes: any[]
+        halfCheckedKeys: any[]
+      }
+    ) => any
+    nodeContextmenu?: (
+      e: any,
+      data?: NormalOption,
+      node?: any,
+      nodeComponent?: any
+    ) => any
+    currentChange?: (data: NormalOption, node?: any) => any
+    nodeExpand?: (data: NormalOption, node?: any, nodeComponent?: any) => any
+    nodeCollapse?: (data: NormalOption, node?: any, nodeComponent?: any) => any
   }
   export interface IFormList extends IFormItemBase {
-    type: "list"
+    type: 'list'
     data: any[]
     loading?: boolean | ((row: any, val: any) => boolean)
     highlightCurrentRow?: boolean
@@ -794,12 +893,15 @@ declare namespace __lgsform {
      * 指定值的字段，可选择时需要指定，如果数据是字符串数组，则不用指定此项
      */
     valueField?: string
-    itemStyle?: Record<string, any> | ((params: any, ...args: any[]) => Record<string, any>)
+    itemStyle?:
+    | Record<string, any>
+    | ((params: any, ...args: any[]) => Record<string, any>)
     itemClass?: string | ((params: any) => string)
     nodeClick?: (node?: any, row?: any) => any
-    nodeDBClick?: (node?: any, row: any) => any
+    nodeDBClick?: (node?: any, row?: any) => any
   }
   export interface IAttrTable {
+    theme?: 'darkblue' | 'dark'
     attributes?: {
       label: string
       value: any
@@ -809,23 +911,23 @@ declare namespace __lgsform {
     columns?: IAttrTableRow[][]
   }
   export interface IFormAttrTable extends IFormItemBase {
-    type: "attr-table"
+    type: 'attr-table'
     config: IAttrTable
   }
   export interface IFormVChart extends IFormItemBase {
-    type: "vchart"
+    type: 'vchart'
     option: any
     handleHighlight?: (...args: any[]) => any
     handleClick?: (...args: any[]) => any
     handleZRClick?: (...args: any[]) => any
   }
-  type ColorAttrType = "hex" | "hex8" | "hsl" | "hsv" | "rgba" | ""
+  export type ColorAttrType = 'hex' | 'hex8' | 'hsl' | 'hsv' | 'rgba' | ''
   export interface IFormColorPicker extends IFormItemBase {
-    type: "color-picker"
+    type: 'color-picker'
     colorType?: ColorAttrType
   }
-  interface IFormTag extends IFormItemBase {
-    type: "tag"
+  export interface IFormTag extends IFormItemBase {
+    type: 'tag'
     round?: boolean
     color?: string | ((row?: any, val?: any) => string)
   }
@@ -838,13 +940,13 @@ declare namespace __lgsform {
    * 1、 change: 绑定值变动时触发的回调，参数为绑定值
    */
   export interface IComponent extends IFormItemBase {
-    type: "component"
+    type: 'component'
     component: any
   }
   export interface IRangeInput extends IFormItemBase {
-    type: "range"
+    type: 'range'
     /** 范围类型： select: 下拉框，input: 输入框， year: 年份选择 */
-    rangeType?: "select" | "input" | "year" | ""
+    rangeType?: 'select' | 'input' | 'year' | ''
     /** 选项 仅rangeType值为select时可用 */
     options?: NormalOption[]
     startPlaceHolder?: string
@@ -855,6 +957,22 @@ declare namespace __lgsform {
     startOptionDisabled?: (option: NormalOption, end: any) => boolean
     /** 动态控制选项是否可选 rangeType值为select时可用 */
     endOptionDisabled?: (option: NormalOption, start: any) => boolean
+  }
+  export interface IUserSelector extends IFormItemBase {
+    type: 'user-select'
+    multiple?: boolean /** 自定义前缀图标 */
+    prefixIcon?: any
+    /** 自定义后缀图标 */
+    suffixIcon?: any
+    /**
+     * 回显时根据此项指定的表单字段的值来初始化用户
+     *
+     * 当多选时暂时未生效
+     */
+    departField?: string
+    disabled?: boolean | ((value: any, row: any, formItem: IFormItem) => boolean)
+    /** top/top-start/top-end/bottom/bottom-start/bottom-end/left/left-start/left-end/right/right-start/right-end */
+    placement?: string
   }
   export type IFormItem =
     | IFormSelect
@@ -897,11 +1015,12 @@ declare namespace __lgsform {
     | IRangeInput
     | IFormColorPicker
     | IFormTag
+    | IUserSelector
 
   /** fieldset */
   export interface IFormFieldset {
     width?: string | number
-    type?: "simple" | "default" | "underline"
+    type?: 'simple' | 'default' | 'underline'
     /**
      * 描述内容
      */
@@ -912,7 +1031,12 @@ declare namespace __lgsform {
       style?: Record<string, any>
       items: IFormItem[]
     }[]
-    handleQuery?: (val: any, params: any, item: IFormItem, column: IFormFieldGroup) => any
+    handleQuery?: (
+      val: any,
+      params: any,
+      item: IFormItem,
+      column: IFormFieldGroup
+    ) => any
   }
 
   /**
@@ -959,6 +1083,7 @@ declare namespace __lgsform {
      * 是否表单结构不会变更，设置此项可以适当提高性能
      */
     static?: boolean
+    popperClass?: string
     /**
      * 元素间隔
      */
@@ -968,7 +1093,7 @@ declare namespace __lgsform {
     /** 标签宽度，在InlineForm中生效，且可以被表单元素的width覆盖 */
     labelWidth?: string | number
     /** 标签位置 */
-    labelPosition?: "top" | "left" | "right"
+    labelPosition?: 'top' | 'left' | 'right'
     /** 表单中嵌套的查询项的默认值 */
     defaultQuerys?: Record<string, any>
     /** 表单默认值 */
@@ -976,7 +1101,7 @@ declare namespace __lgsform {
     /** 控件大小  'large' | 'default' | 'small' */
     size?: ISize
     /** 提交方法,设置此项才会显示确定按钮 */
-    submit?: (params: any, status?: boolean) => any
+    submit?: (params: any, extraSubmitParams?: any) => any
     /** 只是标记当前是否处理提交状态，可用此状态来处理按钮状态 */
     submitting?: boolean
   }
@@ -1014,6 +1139,7 @@ declare namespace __lgsform {
   }
   export interface ISearch {
     size?: ISize
+    popperClass?: string
     filters?: IFormItem[]
     moreFilters?: IFormItem[]
     // rightFilters?: IFormItem[]
@@ -1028,29 +1154,70 @@ declare namespace __lgsform {
   }
 
   export interface IFormWangEditor extends IFormItemBase {
-    type: "wangeditor"
+    type: 'wangeditor'
     // 图片上传地址
     url?: string
     // 菜单模式
-    mode?: "default" | "simple"
+    mode?: 'default' | 'simple'
   }
 
   export interface IFormAnnex extends IFormItemBase {
-    type: "hint"
+    type: 'hint'
     // 显示内容
     text: string
   }
 
   // 表单分割线
   export interface IFdivider extends IFormItemBase {
-    type: "divider"
+    type: 'divider'
     // 文本
     text: string
     // 方向
-    direction?: "horizontal" | "vertical"
+    direction?: 'horizontal' | 'vertical'
     // 样式
-    borderStyle?: "none" | "dotted" | "inset" | "dashed solid" | "dashed double none" | "dashed groove none dotted"
+    borderStyle?:
+    | 'none'
+    | 'dotted'
+    | 'inset'
+    | 'dashed solid'
+    | 'dashed double none'
+    | 'dashed groove none dotted'
     // 文本位置
-    contentPosition?: "left" | "center" | "right"
+    contentPosition?: 'left' | 'center' | 'right'
+  }
+
+}
+declare module '@vue/runtime-core' {
+  export interface GlobalComponents {
+    AttrTable: typeof import('@missssage/lgsform')['AttrTable']
+    AttrTableCellContent: typeof import('@missssage/lgsform')['AttrTableCellContent']
+    AvatarUploader: typeof import('@missssage/lgsform')['AvatarUploader']
+    Button: typeof import('@missssage/lgsform')['Button']
+    CardSearch: typeof import('@missssage/lgsform')['CardSearch']
+    CardTable: typeof import('@missssage/lgsform')['CardTable']
+    ColorPicker: typeof import('@missssage/lgsform')['ColorPicker']
+    DialogForm: typeof import('@missssage/lgsform')['DialogForm']
+    FieldSet: typeof import('@missssage/lgsform')['FieldSet']
+    Form: typeof import('@missssage/lgsform')['Form']
+    FormItem: typeof import('@missssage/lgsform')['FormItem']
+    FormTable: typeof import('@missssage/lgsform')['FormTable']
+    FormTableColumn: typeof import('@missssage/lgsform')['FormTableColumn']
+    FormTree: typeof import('@missssage/lgsform')['FormTree']
+    FormWangeditor: typeof import('@missssage/lgsform')['FormWangeditor']
+    ImgViewer: typeof import('@missssage/lgsform')['ImgViewer']
+    ImportButton: typeof import('@missssage/lgsform')['ImportButton']
+    InlineForm: typeof import('@missssage/lgsform')['InlineForm']
+    List: typeof import('@missssage/lgsform')['List']
+    Pagination: typeof import('@missssage/lgsform')['Pagination']
+    RangeSelecter: typeof import('@missssage/lgsform')['RangeSelecter']
+    Search: typeof import('@missssage/lgsform')['Search']
+    SearchMore: typeof import('@missssage/lgsform')['SearchMore']
+    Tabs: typeof import('@missssage/lgsform')['Tabs']
+    Tag: typeof import('@missssage/lgsform')['Tag']
+    TagGroup: typeof import('@missssage/lgsform')['TagGroup']
+    TiniImageUploader: typeof import('@missssage/lgsform')['TiniImageUploader']
+    Videor: typeof import('@missssage/lgsform')['Videor']
+    Voicer: typeof import('@missssage/lgsform')['Voicer']
   }
 }
+export { }
