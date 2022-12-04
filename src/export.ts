@@ -1,4 +1,4 @@
-import type { App, Plugin } from 'vue'
+import { App, Plugin } from 'vue'
 import AttrTable from './packages/es/AttrTable'
 import AttrTableCellContent from './packages/es/AttrTableCellContent'
 import AvatarUploader from './packages/es/AvatarUploader'

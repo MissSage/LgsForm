@@ -1,5 +1,6 @@
 declare namespace __lgsform {
-  import a from 'element-plus'
+  import { App } from 'vue'
+  export type SFCWithInstall<T> = T & { install?: (app: App) => void };
   export type IButtonType =
     | 'default'
     | 'success'
@@ -94,16 +95,16 @@ declare namespace __lgsform {
     /**
      * 输入框尾部内容，只对非 type="textarea" 有效
      */
-     suffix?:
-     | string
-     | ((option: NormalOption, val: any, row: any, config: IFormRadio) => string)
-     /**
-     * 输入框头部内容，只对非 type="textarea" 有效
-     */
-     prefix?:
-     | string
-     | ((option: NormalOption, val: any, row: any, config: IFormRadio) => string)
-    
+    suffix?:
+    | string
+    | ((option: NormalOption, val: any, row: any, config: IFormRadio) => string)
+    /**
+    * 输入框头部内容，只对非 type="textarea" 有效
+    */
+    prefix?:
+    | string
+    | ((option: NormalOption, val: any, row: any, config: IFormRadio) => string)
+
     /**
      * 输入框前置内容，只对非 type="textarea" 有效
      */
@@ -1137,6 +1138,12 @@ declare namespace __lgsform {
     // 打印配置
     printConfigure?: any
   }
+  export type MoreFilterConditions = {
+    label?: string
+    value?: any
+    filter?: IFormItem
+    formatter?: (val: any, row?: any, filter?: IFormItem) => any
+  }
   export interface ISearch {
     size?: ISize
     popperClass?: string
@@ -1187,37 +1194,3 @@ declare namespace __lgsform {
   }
 
 }
-declare module '@vue/runtime-core' {
-  export interface GlobalComponents {
-    AttrTable: typeof import('@missssage/lgsform')['AttrTable']
-    AttrTableCellContent: typeof import('@missssage/lgsform')['AttrTableCellContent']
-    AvatarUploader: typeof import('@missssage/lgsform')['AvatarUploader']
-    Button: typeof import('@missssage/lgsform')['Button']
-    CardSearch: typeof import('@missssage/lgsform')['CardSearch']
-    CardTable: typeof import('@missssage/lgsform')['CardTable']
-    ColorPicker: typeof import('@missssage/lgsform')['ColorPicker']
-    DialogForm: typeof import('@missssage/lgsform')['DialogForm']
-    FieldSet: typeof import('@missssage/lgsform')['FieldSet']
-    Form: typeof import('@missssage/lgsform')['Form']
-    FormItem: typeof import('@missssage/lgsform')['FormItem']
-    FormTable: typeof import('@missssage/lgsform')['FormTable']
-    FormTableColumn: typeof import('@missssage/lgsform')['FormTableColumn']
-    FormTree: typeof import('@missssage/lgsform')['FormTree']
-    FormWangeditor: typeof import('@missssage/lgsform')['FormWangeditor']
-    ImgViewer: typeof import('@missssage/lgsform')['ImgViewer']
-    ImportButton: typeof import('@missssage/lgsform')['ImportButton']
-    InlineForm: typeof import('@missssage/lgsform')['InlineForm']
-    List: typeof import('@missssage/lgsform')['List']
-    Pagination: typeof import('@missssage/lgsform')['Pagination']
-    RangeSelecter: typeof import('@missssage/lgsform')['RangeSelecter']
-    Search: typeof import('@missssage/lgsform')['Search']
-    SearchMore: typeof import('@missssage/lgsform')['SearchMore']
-    Tabs: typeof import('@missssage/lgsform')['Tabs']
-    Tag: typeof import('@missssage/lgsform')['Tag']
-    TagGroup: typeof import('@missssage/lgsform')['TagGroup']
-    TiniImageUploader: typeof import('@missssage/lgsform')['TiniImageUploader']
-    Videor: typeof import('@missssage/lgsform')['Videor']
-    Voicer: typeof import('@missssage/lgsform')['Voicer']
-  }
-}
-export { }
