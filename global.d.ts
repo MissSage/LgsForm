@@ -1,6 +1,5 @@
 declare namespace __lgsform {
-  import { App } from 'vue'
-  export type SFCWithInstall<T> = T & { install?: (app: App) => void };
+  export type SFCWithInstall<T> = T & { install?: (app: any) => void };
   export type IButtonType =
     | 'default'
     | 'success'
