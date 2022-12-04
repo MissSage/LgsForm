@@ -4,7 +4,7 @@
   "version": "1.1.47",
   "type": "module",
   "main": "dist/lgsform.js",
-  "types": "global.d.ts",
+  "types": "src/types/lgsform.d.ts",
   "module": "dist/lgsform.js",
   "license": "ISC",
   "description": "a package about formusage",
@@ -15,6 +15,7 @@
     "global.d.ts",
     "styles"
   ],
+  "typings": "global.d.ts",
   "exports": {
     ".": {
       "import": "./dist/lgsform.js",
