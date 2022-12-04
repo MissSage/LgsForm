@@ -17,9 +17,10 @@
 <script lang="ts" setup>
 import { reactive } from 'vue'
 import { ElPagination } from 'element-plus'
+import { IPagination } from '@/types/interfaces';
 
 const props = defineProps<{
-  config: __lgsform.IPagination
+  config: IPagination
   refreshData?:(pageSize: { page: number; size: number }) => any
 }>()
 const state = reactive<{ page: number; size: number }>({

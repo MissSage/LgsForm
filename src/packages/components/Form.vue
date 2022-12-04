@@ -302,9 +302,10 @@ import FieldSet from './FieldSet.vue'
 import FormItem from './FormItem.vue'
 import FormTable from './FormTable.vue'
 import Button from './Button.vue'
+import { IFormConfig, IFormItem, IFormFieldGroup } from '@/types/interfaces'
 
 const props = defineProps<{
-  config: __lgsform.IFormConfig
+  config: IFormConfig
 }>()
 const refForm = ref<InstanceType<typeof ElForm>>()
 const state = reactive<{
@@ -324,12 +325,12 @@ const state = reactive<{
 })
 const handleFormItemChange = (
   val: any,
-  item: __lgsform.IFormItem,
-  fieldSet?: __lgsform.IFormFieldGroup
+  item: IFormItem,
+  fieldSet?: IFormFieldGroup
 ) => {
   item.onChange && item.onChange(val, item, fieldSet)
 }
-const computedGutter = (group: __lgsform.IFormFieldGroup, config: __lgsform.IFormConfig) => {
+const computedGutter = (group: IFormFieldGroup, config: IFormConfig) => {
   if (group.gutter !== undefined) {
     return group.gutter
   }

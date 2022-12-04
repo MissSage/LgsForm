@@ -3,18 +3,19 @@
   <FormTable :config="TableConfig"></FormTable>
 </template>
 <script lang="ts" setup>
+import { IFormConfig, ITable } from "@/types/interfaces";
 import { reactive, ref } from "vue";
 // import Form from '../packages/es/Form'
 import { FormTable, Form } from "../export";
 
-const FormConfig = reactive<__lgsform.IFormConfig>({
+const FormConfig = reactive<IFormConfig>({
   group: [
     {
       fields: [{ type: "input", field: "aaa", label: "bbb" }],
     },
   ],
 });
-const TableConfig = reactive<__lgsform.ITable>({
+const TableConfig = reactive<ITable>({
   dataList: [{ index: "111" }],
   pagination: {
     hide: true,

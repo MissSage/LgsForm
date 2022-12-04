@@ -68,7 +68,8 @@
     </tbody>
   </table>
 </template>
-<script lang="ts" setup>
+<script lang="ts" setup>import { IAttrTableRow } from '@/types/interfaces';
+
 
 const emit = defineEmits<{ (e: "row-click", row: any, data?: any) }>();
 const props = defineProps<{
@@ -77,9 +78,9 @@ const props = defineProps<{
     value: any;
     data?: any;
   }[];
-  rows?: __lgsform.IAttrTableRow[][];
+  rows?: IAttrTableRow[][];
   data?: any;
-  columns?: __lgsform.IAttrTableRow[][];
+  columns?: IAttrTableRow[][];
   theme?: "darkblue" | "dark";
 }>();
 const handleRowClick = (row) => {

@@ -51,13 +51,14 @@
 </template>
 
 <script lang="ts" setup>
+import { IFormItem, ISize } from '@/types/interfaces';
 import { ElButton, ElForm, ElFormItem } from 'element-plus'
 import { reactive, ref } from 'vue'
 import FormItem from './FormItem.vue'
 
 const props = defineProps<{
-  filters: __lgsform.IFormItem[]
-  size?: __lgsform.ISize
+  filters: IFormItem[]
+  size?: ISize
   labelWidth?: string | number
   defaultParams: Record<string, any>
 }>()
@@ -74,7 +75,7 @@ const submit = () => {
   emit('submit', state.queryParams)
   emit('close')
 }
-const handleFormItemChange = (val: any, item: __lgsform.IFormItem) => {
+const handleFormItemChange = (val: any, item: IFormItem) => {
   item.onChange && item.onChange(val, item)
 }
 const resetForm = () => {

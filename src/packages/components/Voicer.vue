@@ -1,27 +1,13 @@
 <template>
   <div class="audio-wrapper">
-    <el-icon
-      v-if="state.paused"
-      class="voice-icon"
-    >
+    <el-icon v-if="state.paused" class="voice-icon">
       <VideoPlay @click="togglePlay" />
     </el-icon>
-    <el-icon
-      v-else
-      class="voice-icon"
-    >
+    <el-icon v-else class="voice-icon">
       <VideoPause @click="togglePlay" />
     </el-icon>
-    <span
-      v-if="showUrl"
-      class="voice-url"
-      @click="() => download && downloadUrl(url)"
-    >{{ url }}</span>
-    <audio
-      ref="refAudio"
-      :class="size || 'default'"
-      :src="url"
-    ></audio>
+    <span v-if="showUrl" class="voice-url" @click="() => download && downloadUrl(url)">{{ url }}</span>
+    <audio ref="refAudio" :class="size || 'default'" :src="url"></audio>
   </div>
 </template>
 <script lang="ts" setup>
@@ -29,11 +15,12 @@ import { VideoPlay, VideoPause } from '@element-plus/icons'
 import { ElIcon } from 'element-plus'
 import { ref, reactive } from 'vue'
 import { downloadUrl } from '@/utils/fileHelper'
+import { ISize } from '@/types/interfaces';
 
 const refAudio = ref<HTMLAudioElement>()
 defineProps<{
   url?: string
-  size?: __lgsform.ISize
+  size?: ISize
   showUrl?: boolean
   download?: boolean
 }>()
@@ -52,16 +39,19 @@ const togglePlay = () => {
   display: flex;
   align-items: center;
 }
+
 .voice-icon {
   cursor: pointer;
   margin-right: 8px;
 }
+
 .voice-url {
   text-decoration: underline;
   color: cadetblue;
   cursor: pointer;
   text-overflow: ellipsis;
   overflow: hidden;
+
   &:hover {
     color: var(--el-color-primary);
   }

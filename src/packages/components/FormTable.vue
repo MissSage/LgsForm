@@ -296,10 +296,11 @@ import Pagination from './Pagination.vue'
 import FormItem from './FormItem.vue'
 import { fileStrToArr } from '@/utils/GlobalHelper'
 import Button from './Button.vue'
+import { ITable, ISize } from '@/types/interfaces'
 
 const props = defineProps<{
-  config: __lgsform.ITable
-  size?: __lgsform.ISize
+  config: ITable
+  size?: ISize
   modelValue?: any
   inCard?: boolean
 }>()

@@ -151,10 +151,11 @@
   </template>
 </template>
 <script lang="ts" setup>
+import { IAttrTableRow } from '@/types/interfaces';
 import { resolveElImageData } from '@/utils/GlobalHelper'
 
 defineProps<{
-  config: __lgsform.IAttrTableRow
+  config: IAttrTableRow
   row: any
 }>()
 

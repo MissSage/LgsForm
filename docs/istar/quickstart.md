@@ -33,7 +33,7 @@ app.use(lgsForm)
 ```ts
 <script lang="ts" setup>
 const refForm = ref<InstanceType<typeof Form>>()
-const FormConfig = reactive<__lgsform.IFormConfig>({
+const FormConfig = reactive<IFormConfig>({
   group: [
     {
       fields: [

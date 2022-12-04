@@ -51,11 +51,12 @@ import { ElButton, ElIcon, ElUpload, ElImage } from 'element-plus'
 import { Picture } from '@element-plus/icons'
 import { SLMessage } from '@/utils/Message'
 import Button from './Button.vue'
+import { ITinyImageUploader, ISize } from '@/types/interfaces';
 
 defineProps<{
   modelValue?: string
-  config: __lgsform.ITinyImageUploader
-  size?: __lgsform.ISize
+  config: ITinyImageUploader
+  size?: ISize
   /** 上传文件的路径 */
   url?: string
   /** 请求头 */

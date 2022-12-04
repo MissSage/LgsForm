@@ -38,6 +38,7 @@
   </div>
 </template>
 <script lang="ts" setup>
+import { IFormItem } from '@/types/interfaces';
 import { reactive } from 'vue'
 import FormItem from './FormItem.vue'
 
@@ -46,7 +47,7 @@ const props = withDefaults(
     title?: string
     titleRight?: {
       className?: string
-      items: __lgsform.IFormItem[]
+      items: IFormItem[]
     }[]
     titleQueryParams?: Record<string, any>
     type?: 'simple' | 'default' | 'underline'

@@ -1,4 +1,6 @@
-export const resolveValue = (config: __lgsform.IFormItem, val?: any) => {
+import { IFormItem, IFormSelect, IFormUser } from "@/types/interfaces"
+
+export const resolveValue = (config: IFormItem, val?: any) => {
   switch (config.type) {
     case 'checkbox':
     case 'cascader':
@@ -14,7 +16,7 @@ export const resolveValue = (config: __lgsform.IFormItem, val?: any) => {
       return val
   }
 }
-export const deresolveValue = (config: __lgsform.IFormItem, val?: any) => {
+export const deresolveValue = (config: IFormItem, val?: any) => {
   switch (config.type) {
     case 'user':
       return deresolveUser(config, val)
@@ -25,13 +27,13 @@ export const deresolveValue = (config: __lgsform.IFormItem, val?: any) => {
   }
 }
 
-const resolveSelectMultiple = (config: __lgsform.IFormSelect, val?: any) => {
+const resolveSelectMultiple = (config: IFormSelect, val?: any) => {
   if (!val) return []
 
   if (val instanceof Array) return val
   return val.split(',')
 }
-const deresolveMultiple = (config: __lgsform.IFormSelect, val?: any) => {
+const deresolveMultiple = (config: IFormSelect, val?: any) => {
   if (!val) return config.returnType === 'arr' ? [] : val
 
   if (val instanceof Array) {
@@ -39,7 +41,7 @@ const deresolveMultiple = (config: __lgsform.IFormSelect, val?: any) => {
   }
   return config.returnType === 'str' ? val : val.split(',')
 }
-export const deresolveUser = (config:__lgsform.IFormUser, val?:any) => {
+export const deresolveUser = (config:IFormUser, val?:any) => {
   if (!val) return val
 
   if (val instanceof Array) {

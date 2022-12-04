@@ -1,3 +1,5 @@
+import { NormalOption } from "@/types/interfaces"
+
 /**
  * treeData格式化
  * @param tree
@@ -15,7 +17,7 @@ export const formatTree = (
   },
   pPath?: any[],
   type?: string,
-  dealItem?: (item: __lgsform.NormalOption) => __lgsform.NormalOption
+  dealItem?: (item: NormalOption) => NormalOption
 ): any[] => {
   const format = keys || {
     label: 'name',
@@ -49,20 +51,20 @@ export const formatTree = (
   return tree
 }
 export const getFormatTreeNodeDeepestChild = (
-  nodes?: __lgsform.NormalOption[]
-): __lgsform.NormalOption | undefined => {
+  nodes?: NormalOption[]
+): NormalOption | undefined => {
   if (!nodes?.length) return
   const firstHasChild = nodes.find(item => item.children?.length)
   if (firstHasChild) return getFormatTreeNodeDeepestChild(firstHasChild.children)
   return nodes[0]
 }
 export const getFormatTreeNode = (
-  tree?: __lgsform.NormalOption[],
+  tree?: NormalOption[],
   key = 'value',
   value?: any
-): __lgsform.NormalOption | undefined => {
+): NormalOption | undefined => {
   if (tree === undefined || value === undefined) return
-  let item: __lgsform.NormalOption | undefined
+  let item: NormalOption | undefined
   for (let i = 0; i < tree.length; i++) {
     item = tree[i]
     if (item === undefined) return item
@@ -184,10 +186,10 @@ export const fileStrToArr = (fileStr?: string): string[] => {
 export const getUrlPramByName = (
   url: string,
   key: string
-): __lgsform.NormalOption | null => {
+): NormalOption | null => {
   if (url && url.indexOf('?') !== -1) {
     const params = url.split('?')[1].split('&')
-    const result: __lgsform.NormalOption = {
+    const result: NormalOption = {
       label: '',
       value: ''
     }

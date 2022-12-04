@@ -124,13 +124,14 @@
   </div>
 </template>
 <script lang="ts" setup>
+import { IFormList } from '@/types/interfaces';
 import { ElCheckboxGroup, ElCheckbox } from 'element-plus'
 import { reactive, watch, computed } from 'vue'
 import FormItem from './FormItem.vue'
 
 const emit = defineEmits(['change', 'update:modelValue', 'click'])
 const props = defineProps<{
-  config: __lgsform.IFormList
+  config: IFormList
   row?: any
   modelValue?: any
 }>()

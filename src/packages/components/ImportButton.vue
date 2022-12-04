@@ -1,19 +1,15 @@
 <template>
-  <el-upload
-    class="deviceImportBtn"
-    action="action"
-    :show-file-list="false"
-    :http-request="UploadFile"
-  >
+  <el-upload class="deviceImportBtn" action="action" :show-file-list="false" :http-request="UploadFile">
     <el-button>{{ config?.text || '导 入' }}</el-button>
   </el-upload>
 </template>
 
 <script lang="ts" setup>
+import { IButton } from '@/types/interfaces';
 import { ElUpload, ElButton } from 'element-plus'
 
 const props = defineProps<{
-  config: __lgsform.IButton
+  config: IButton
 }>()
 
 const UploadFile = async (res: any) => {

@@ -1,36 +1,23 @@
 <template>
-  <div
-    :style="typeof config.style==='function'?config.style(modelValue,row,config) :config.style"
-    class="list-wrapper overlay"
-    :class="config.className"
-  >
-    <el-tree
-      ref="refTree"
-      style="width: 100%"
-      :size="config.size || size || 'default'"
-      :data="config.options"
-      :show-checkbox="config.showCheckbox"
-      :check-strictly="config.checkStrictly"
-      :check-on-click-node="true"
-      :node-key="config.nodeKey||'id'"
-      default-expand-all
-      :props="config.props || state.defaultProps"
-      @check="handleCheck"
-      @node-click="config.nodeClick"
-      @check-change="config.handleCheckChange"
-    ></el-tree>
+  <div :style="typeof config.style === 'function' ? config.style(modelValue, row, config) : config.style"
+    class="list-wrapper overlay" :class="config.className">
+    <el-tree ref="refTree" style="width: 100%" :size="config.size || size || 'default'" :data="config.options"
+      :show-checkbox="config.showCheckbox" :check-strictly="config.checkStrictly" :check-on-click-node="true"
+      :node-key="config.nodeKey || 'id'" default-expand-all :props="config.props || state.defaultProps"
+      @check="handleCheck" @node-click="config.nodeClick" @check-change="config.handleCheckChange"></el-tree>
   </div>
 </template>
 <script lang="ts" setup>
+import { IFormTree, ISize } from '@/types/interfaces';
 import { ElTree } from 'element-plus'
 import { onMounted, reactive, ref, watch } from 'vue'
 
 const emit = defineEmits(['change', 'update:model-value'])
 const props = defineProps<{
   modelValue?: string[]
-  config: __lgsform.IFormTree
+  config: IFormTree
   row?: any
-  size?: __lgsform.ISize
+  size?: ISize
 }>()
 const refTree = ref<InstanceType<typeof ElTree>>()
 const state = reactive<{
@@ -66,8 +53,7 @@ onMounted(() => {
 })
 </script>
 <style lang="scss" scoped>
-
-  .list-wrapper{
-    width: 100%;
-  }
+.list-wrapper {
+  width: 100%;
+}
 </style>

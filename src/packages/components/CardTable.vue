@@ -62,9 +62,10 @@ import { reactive, ref, toRefs } from 'vue'
 import SLCard from './SLCard.vue'
 import FormTable from './FormTable.vue'
 import FormItem from './FormItem.vue'
+import { ICardTable } from '@/types/interfaces';
 
 defineProps<{
-  config: __lgsform.ICardTable
+  config: ICardTable
 }>()
 const refTable = ref<InstanceType<typeof FormTable>>()
 const state = reactive<{

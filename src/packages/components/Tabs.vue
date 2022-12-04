@@ -1,58 +1,34 @@
 <template>
-  <div
-    v-if="config?.tabs?.length"
-    class="tabs-wrapper"
-  >
-    <el-tabs
-      v-model="state.activeName"
-      :type="config.tabType === 'border-card' ? 'border-card' : 'card'"
-      :disabled="
-        typeof config.readonly === 'function'
-          ? config.readonly(state.activeName, row, config)
-          : config.readonly
-      "
-      :size="config?.size || size || 'default'"
-      :closable="config.closable"
-      :class="[
-        config.className,
-        config.tabType || 'simple',
-        config.btns?.length ? 'hasright' : '',
-        config.theme
-      ]"
-      :stretch="config.stretch"
-      @tab-click="config?.handleTabClick"
-      @tab-remove="removeTab"
-    >
-      <el-tab-pane
-        v-for="item in config.tabs"
-        :key="item.value"
-        :label="item.label"
-        :name="item.value"
-        :disabled="item.disabled"
-      >
+  <div v-if="config?.tabs?.length" class="tabs-wrapper">
+    <el-tabs v-model="state.activeName" :type="config.tabType === 'border-card' ? 'border-card' : 'card'" :disabled="
+      typeof config.readonly === 'function'
+        ? config.readonly(state.activeName, row, config)
+        : config.readonly
+    " :size="config?.size || size || 'default'" :closable="config.closable" :class="[
+  config.className,
+  config.tabType || 'simple',
+  config.btns?.length ? 'hasright' : '',
+  config.theme
+]" :stretch="config.stretch" @tab-click="config?.handleTabClick" @tab-remove="removeTab">
+      <el-tab-pane v-for="item in config.tabs" :key="item.value" :label="item.label" :name="item.value"
+        :disabled="item.disabled">
       </el-tab-pane>
     </el-tabs>
-    <div
-      v-if="config?.btns?.length"
-      class="top-right-wrapper"
-    >
-      <Button
-        v-for="(item, i) in config?.btns"
-        :key="i"
-        :config="item"
-      ></Button>
+    <div v-if="config?.btns?.length" class="top-right-wrapper">
+      <Button v-for="(item, i) in config?.btns" :key="i" :config="item"></Button>
     </div>
   </div>
 </template>
 <script lang="ts" setup>
+import { ITabs, ISize } from '@/types/interfaces';
 import { ElTabs, ElTabPane } from 'element-plus'
 import { reactive, watch } from 'vue'
 import Button from './Button.vue'
 
 const props = defineProps<{
   modelValue?: string | number
-  config?: __lgsform.ITabs
-  size?: __lgsform.ISize
+  config?: ITabs
+  size?: ISize
   row?: Record<string, any>
 }>()
 const emit = defineEmits(['change', 'update:model-value'])
@@ -103,6 +79,7 @@ watch(
 .tabs-wrapper {
   width: 100%;
   position: relative;
+
   .top-right-wrapper {
     position: absolute;
     right: 0;
@@ -114,9 +91,11 @@ watch(
   .el-tabs__header {
     margin: 0;
   }
+
   &.simple {
     .el-tabs__item {
       border: none;
+
       &.is-active,
       &:hover,
       &:focus {
@@ -125,15 +104,17 @@ watch(
       }
     }
 
-    & > .el-tabs__header {
+    &>.el-tabs__header {
       .el-tabs__nav {
         border: none;
       }
     }
   }
+
   &.inset {
     .el-tabs__item {
       border: none;
+
       &.is-active,
       &:hover,
       &:focus {
@@ -141,6 +122,7 @@ watch(
         color: var(--el-color-primary);
       }
     }
+
     // &.el-tabs--top {
     //   .el-tabs__header.is-top {
     //     .el-tabs__nav-wrap.is-scrollable {
@@ -149,14 +131,16 @@ watch(
     //   }
     // }
     &.dark {
-      & > .el-tabs__header {
+      &>.el-tabs__header {
         background-color: #32364b;
+
         .el-tabs__nav {
           border: none;
         }
       }
     }
-    & > .el-tabs__header {
+
+    &>.el-tabs__header {
       background-color: #e2e2e2;
 
       .el-tabs__nav {
@@ -165,11 +149,14 @@ watch(
     }
   }
 }
+
 .darkblue {
   &.el-tabs {
     background-color: transparent;
+
     :deep(.el-tabs__header) {
       background-color: transparent;
+
       .el-tabs__item {
         &.is-active {
           background-color: rgba(21, 45, 68, 1);
