@@ -3,27 +3,7 @@
   "private": false,
   "version": "1.1.51",
   "type": "module",
-  "main": "dist/lgsform.js",
-  "types": "interfaces.d.ts",
-  "module": "dist/lgsform.js",
   "license": "ISC",
-  "description": "a package about formusage",
-  "files": [
-    "dist",
-    "src/packages",
-    "src/types",
-    "styles"
-  ],
-  "exports": {
-    ".": {
-      "import": "./dist/lgsform.js",
-      "require": "./dist/lgsform.umd.cjs"
-    },
-    "./style.css": {
-      "import": "./dist/style.css",
-      "require": "./dist/style.css"
-    }
-  },
   "author": {
     "name": "MissSage",
     "email": "184078718@qq.com"
