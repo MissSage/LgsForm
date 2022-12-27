@@ -23,6 +23,16 @@ export default defineConfig({
         ]
       },
       {
+        text: "工具列表",
+        items: [
+          {
+            items: [
+              { text: 'mysql', link: '/utils/mysql' }
+            ]
+          }
+        ]
+      },
+      {
         text: "相关链接",
         items: [
           {
