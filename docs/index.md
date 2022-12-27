@@ -11,7 +11,7 @@ hero:
   actions:
     - theme: brand
       text: Get Start
-      link: /istar/quickstart
+      link: https://misssage.github.io/ms_gis
     - theme: alt
       text: istar
       link: /istar/
